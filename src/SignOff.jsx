@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { fetcherWithAxios } from './FetchWithAxios';
 import Typewriter from './TypeEffect';
-
+import GetNewSignOffButton from './GetNewSignOffButton';
+import CopySignOffButton from './CopySignOffButton';
 
 const SignOff = () => {
-
     const [signOffData, setSignOffData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [finishedTyping, setFinishedTyping] = useState(false);
-  
-    useEffect(() => {
-      const fetchSignOffData = async () => {
+    
+    const fetchSignOffData = async () => {
         try {
           const [ response ] = await fetcherWithAxios(
             `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs`
@@ -25,11 +24,19 @@ const SignOff = () => {
           setLoading(false);
         }
       };
+
+    useEffect(() => {
       fetchSignOffData();
     }, []);
     
     const handleFinishedtyping = (bool) => {  
         setFinishedTyping(bool)  
+    }  
+
+    const handleReset = () => {  
+        setFinishedTyping(false)
+        setSignOffData(null)
+        fetchSignOffData()
     }  
 
     const DisplayAuthor = () => {      
@@ -42,12 +49,14 @@ const SignOff = () => {
 
     return (
     <>
-        <div>
-            {loading && (<div>Loading...</div>)}
-            {error && (<div>{error}</div>)}
+        <div className='signOff-container'>
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
             {signOffData && (<Typewriter text={signOffData.signOff} speed={40} handleFinishedtyping={handleFinishedtyping}/>)}
             <DisplayAuthor />
+            <CopySignOffButton text={signOffData?.signOff}/>
         </div>
+        <GetNewSignOffButton handleFinishedtyping={handleReset}/>
     </>
     );
   };
