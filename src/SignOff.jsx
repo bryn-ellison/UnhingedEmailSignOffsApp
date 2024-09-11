@@ -3,12 +3,14 @@ import { fetcherWithAxios } from './FetchWithAxios';
 import Typewriter from './TypeEffect';
 import GetNewSignOffButton from './GetNewSignOffButton';
 import CopySignOffButton from './CopySignOffButton';
+import CreateSignOffButton from './assets/CreateSignOffButton';
 
 const SignOff = () => {
     const [signOffData, setSignOffData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [finishedTyping, setFinishedTyping] = useState(false);
+    const [copySuccess, setCopySuccess] = useState('');
     
     const fetchSignOffData = async () => {
         try {
@@ -33,17 +35,29 @@ const SignOff = () => {
         setFinishedTyping(bool)  
     }  
 
+    const copyToClipBoard = async (signOffData) => {
+      try {
+        await navigator.clipboard.writeText(signOffData.signOff);
+        setCopySuccess('Copied!');
+      } catch (err) {
+        setCopySuccess('Failed to copy!');
+      }
+    };
+
     const handleReset = () => {  
         setFinishedTyping(false)
         setSignOffData(null)
+        setCopySuccess("")
         fetchSignOffData()
     }  
 
     const DisplayAuthor = () => {      
-        if (finishedTyping === false) {
-            return
+        if (finishedTyping === false) { 
+            return;
+        } else if (copySuccess !== "") {
+            return <p>{signOffData.author}</p>;
         } else {
-            return <Typewriter text= {signOffData.author} speed={40} handleFinishedtyping={handleFinishedtyping}/>
+            return <Typewriter text= {signOffData.author} speed={40} handleFinishedtyping={handleFinishedtyping}/>;
         }
     };
 
@@ -54,9 +68,14 @@ const SignOff = () => {
             {error && <div>{error}</div>}
             {signOffData && (<Typewriter text={signOffData.signOff} speed={40} handleFinishedtyping={handleFinishedtyping}/>)}
             <DisplayAuthor />
-            <CopySignOffButton text={signOffData?.signOff}/>
+            <p className='copy-message'>{copySuccess}</p>
+            <CopySignOffButton copyToClipBoard={copyToClipBoard} text={signOffData?.signOff}/>
+            
         </div>
-        <GetNewSignOffButton handleFinishedtyping={handleReset}/>
+        <div className='buttons-container'>
+          <GetNewSignOffButton handleFinishedtyping={handleReset}/>
+          <CreateSignOffButton />
+        </div>
     </>
     );
   };

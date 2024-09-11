@@ -10,8 +10,45 @@ p {
 }
 
 .signOff-container {
+  position: relative;
   border: 1px solid rgba(255, 255, 255, 0.87);
   padding: 1rem;
   width: 600px;
   min-height: 300px;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1.3rem;
+  border: none;
+}
+
+button:hover {
+  color: gray;
+}
+
+.buttons-container {
+  width: 600px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ui-btn {
+  padding: .5rem;
+  width: 10rem;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+}
+
+.copy-btn {
+  position: absolute;
+  font-size: 2rem;
+  bottom: 1rem; right: 1rem;
+}
+
+.copy-message {
+  position: absolute;
+  bottom: 0.8rem; right: 4rem;
+  font-size: 1rem;
 }

@@ -5,7 +5,7 @@ const getNewButton = ({handleFinishedtyping}) => {
     }
 
     return (
-        <button onClick={handleButtonClick}>Again</button>
+        <button className="ui-btn" onClick={handleButtonClick}>Again</button>
     )
 }
 

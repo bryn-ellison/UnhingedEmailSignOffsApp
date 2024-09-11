@@ -1,11 +1,12 @@
-const copyButton = (textToCopy) => {
-    function handleButtonClick(textToCopy) {
-        navigator.clipboard.writeText(textToCopy.text)
-    }
+import { GoCopy } from "react-icons/go";
 
-    return (
-        <button onClick={handleButtonClick(textToCopy)}>Copy</button>
-    )
+const copyButton = ({copyToClipBoard, text}) => {
+
+return (
+    <button className="copy-btn" onClick={() => copyToClipBoard(text)}>
+        <GoCopy />
+    </button>
+)
 }
 
 export default copyButton;
