@@ -30,7 +30,7 @@ createRoot(document.getElementById("root")).render(
     domain="dev-pc2rdn4i8ffin0d4.uk.auth0.com"
     clientId="yBHkadJfpzGsft7alJBqteh78Uj5UEMW"
     authorizationParams={{
-      redirect_uri: window.location.origin,
+      redirect_uri: "/admin",
     }}
   >
     <RouterProvider router={router} />
