@@ -5,7 +5,15 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button onClick={() => logout({ logoutParams: { returnTo: "/" } })}>
+    <button
+      onClick={() =>
+        logout({
+          logoutParams: {
+            returnTo: "https://unhingedemailsignoffs.netlify.app/",
+          },
+        })
+      }
+    >
       Log Out
     </button>
   );
