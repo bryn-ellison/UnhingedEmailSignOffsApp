@@ -27,6 +27,17 @@ button:hover {
   color: gray;
 }
 
+.form-fields {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
 .buttons-container {
   width: 600px;
   padding: 1rem;
@@ -36,7 +47,7 @@ button:hover {
 }
 
 .ui-btn {
-  padding: .5rem;
+  padding: 0.5rem;
   width: 10rem;
   border: 1px solid rgba(255, 255, 255, 0.87);
 }
@@ -44,11 +55,13 @@ button:hover {
 .copy-btn {
   position: absolute;
   font-size: 2rem;
-  bottom: 1rem; right: 1rem;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .copy-message {
   position: absolute;
-  bottom: 0.8rem; right: 4rem;
+  bottom: 0.8rem;
+  right: 4rem;
   font-size: 1rem;
 }
