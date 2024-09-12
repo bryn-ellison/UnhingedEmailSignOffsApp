@@ -25,47 +25,41 @@ const Auth0ProviderLayout = () => (
   </Auth0Provider>
 );
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route element={<Auth0ProviderLayout />}>
-      <Route path="/" element={<App />} errorElement={<ErrorPage />}></Route>
-      <Route
-        path="/create"
-        element={<CreateSignOff />}
-        errorElement={<ErrorPage />}
-      ></Route>
-      <Route
-        path="/admin"
-        element={<Admin />}
-        errorElement={<ErrorPage />}
-      ></Route>
-    </Route>
-  )
-);
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route element={<Auth0ProviderLayout />}>
+//       <Route path="/" element={<App />} errorElement={<ErrorPage />}></Route>
+//       <Route
+//         path="/create"
+//         element={<CreateSignOff />}
+//         errorElement={<ErrorPage />}
+//       ></Route>
+//       <Route
+//         path="/admin"
+//         element={<Admin />}
+//         errorElement={<ErrorPage />}
+//       ></Route>
+//     </Route>
+//   )
+// );
 
-// const router = createBrowserRouter([
-//   {
-//     element: <Auth0ProviderLayout />,
-//     errorElement: <ErrorPage />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <App />,
-//         errorElement: <ErrorPage />,
-//       },
-//       {
-//         path: "/create",
-//         element: <CreateSignOff />,
-//         errorElement: <ErrorPage />,
-//       },
-//       {
-//         path: "/admin",
-//         element: <Admin />,
-//         errorElement: <ErrorPage />,
-//       },
-//     ],
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/create",
+    element: <CreateSignOff />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+    errorElement: <ErrorPage />,
+  },
+]);
 
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
