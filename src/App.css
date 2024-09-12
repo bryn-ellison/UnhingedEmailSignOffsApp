@@ -17,6 +17,18 @@ p {
   min-height: 300px;
 }
 
+.form-container {
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  padding: 1rem;
+  width: 600px;
+  min-height: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   background-color: transparent;
   font-size: 1.3rem;
@@ -24,14 +36,14 @@ button {
 }
 
 button:hover {
-  color: gray;
+  color: lightgray;
 }
 
 .form-fields {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 2rem;
   margin-bottom: 1rem;
-  width: 100%;
+  padding: 10px;
 }
 
 textarea {

@@ -46,7 +46,7 @@ const CreateSignOff = () => {
 
   return (
     <>
-      <div className="signOff-container">{displayForm()}</div>
+      <div className="form-container">{displayForm()}</div>
       <div className="buttons-container">
         {displayButtons()}
         <NavigateButton page={"/"} buttonText={"Go back"} />

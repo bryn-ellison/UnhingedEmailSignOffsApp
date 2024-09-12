@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import CreateSignOff from "./CreateSignOff.jsx";
 import ErrorPage from "./error-page";
+import Admin from "./Admin";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -14,6 +15,11 @@ const router = createBrowserRouter([
   {
     path: "/create",
     element: <CreateSignOff />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
     errorElement: <ErrorPage />,
   },
 ]);
