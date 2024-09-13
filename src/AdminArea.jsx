@@ -14,6 +14,7 @@ const AdminArea = () => {
     return (
       isAuthenticated && (
         <div>
+          <p>Hello, {user.name}!</p>
           <Profile />
         </div>
       )

@@ -1,37 +1,80 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
+// const Profile = () => {
+//   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
+//   const [apiAccessToken, setApiAccessToken] = useState(null);
+
+//   useEffect(() => {
+//     const getUserMetadata = async () => {
+//       try {
+//         const accessToken = await getAccessTokenSilently({
+//           authorizationParams: {
+//             audience: "UnhingedEmailSignOffsApi",
+//             scope: "read:signoffs write:signoffs update:signoffs",
+//           },
+//         });
+//         setApiAccessToken(accessToken);
+//       } catch (e) {
+//         console.log(e.message);
+//       }
+//     };
+
+//     getUserMetadata();
+//   }, [getAccessTokenSilently, user?.sub]);
+
+//   return (
+//     isAuthenticated && (
+//       <div>
+//         <AdminSignOffLists />
+//       </div>
+//     )
+//   );
+// };
+
 const Profile = () => {
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [userMetadata, setUserMetadata] = useState(null);
+  const { getAccessTokenSilently } = useAuth0();
+  const [signOffs, setSignOffs] = useState(null);
 
   useEffect(() => {
-    const getUserMetadata = async () => {
+    (async () => {
       try {
-        const accessToken = await getAccessTokenSilently({
+        const token = await getAccessTokenSilently({
           authorizationParams: {
             audience: "UnhingedEmailSignOffsApi",
             scope: "read:signoffs write:signoffs update:signoffs",
           },
         });
-        setUserMetadata(accessToken);
+        const response = await fetch(
+          "https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/approve",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setSignOffs(await response.json());
       } catch (e) {
-        console.log(e.message);
+        console.error(e);
       }
-    };
+    })();
+  }, [getAccessTokenSilently]);
 
-    getUserMetadata();
-  }, [getAccessTokenSilently, user?.sub]);
+  if (!signOffs) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    user && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-        <p>{userMetadata}</p>
-      </div>
-    )
+    <ul>
+      {signOffs.map((signOff, index) => {
+        return (
+          <li key={index}>
+            <p>{signOff.signOff}</p>
+            <p>{signOff.author}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
