@@ -46,7 +46,7 @@ const Profile = () => {
           },
         });
         const response = await fetch(
-          "https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/approve",
+          "https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/toapprove",
           {
             headers: {
               Authorization: `Bearer ${token}`,
