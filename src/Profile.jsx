@@ -5,10 +5,13 @@ const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
+  console.log(user.name);
+  console.log(user.email);
+
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = "dev-pc2rdn4i8ffin0d4.uk.auth0.com";
-      console.log(user.sub + " USER SUB!!!!");
+
       try {
         const accessToken = await getAccessTokenSilently({
           authorizationParams: {
