@@ -8,7 +8,7 @@ const Profile = () => {
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = "dev-pc2rdn4i8ffin0d4.uk.auth0.com";
-
+      console.log(user.sub + " USER SUB!!!!");
       try {
         const accessToken = await getAccessTokenSilently({
           authorizationParams: {
@@ -16,7 +16,7 @@ const Profile = () => {
             scope: "read:signoffs write:signoffs update:signoffs",
           },
         });
-
+        console.log(accessToken + " Access TOKEN");
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
         const metadataResponse = await fetch(userDetailsByIdUrl, {
@@ -24,9 +24,9 @@ const Profile = () => {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-
+        console.log((await metadataResponse.json()) + "METADAT RESPONSE");
         const { user_metadata } = await metadataResponse.json();
-        console.log(user_metadata + " IS USER METADATA Working?");
+
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
