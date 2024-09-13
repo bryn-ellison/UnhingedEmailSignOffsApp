@@ -5,13 +5,8 @@ const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [userMetadata, setUserMetadata] = useState(null);
 
-  console.log(user.name);
-  console.log(user.email);
-
   useEffect(() => {
     const getUserMetadata = async () => {
-      const domain = "dev-pc2rdn4i8ffin0d4.uk.auth0.com";
-
       try {
         const accessToken = await getAccessTokenSilently({
           authorizationParams: {
@@ -19,18 +14,7 @@ const Profile = () => {
             scope: "read:signoffs write:signoffs update:signoffs",
           },
         });
-        console.log(accessToken + " Access TOKEN");
-        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-
-        const metadataResponse = await fetch(userDetailsByIdUrl, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        console.log((await metadataResponse.json()) + "METADAT RESPONSE");
-        const { user_metadata } = await metadataResponse.json();
-
-        setUserMetadata(user_metadata);
+        setUserMetadata(accessToken);
       } catch (e) {
         console.log(e.message);
       }
@@ -40,17 +24,12 @@ const Profile = () => {
   }, [getAccessTokenSilently, user?.sub]);
 
   return (
-    isAuthenticated && (
+    user && (
       <div>
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
-        <h3>User Metadata</h3>
-        {userMetadata ? (
-          <pre>{JSON.stringify(userMetadata, null, 2)}</pre>
-        ) : (
-          "No user metadata defined"
-        )}
+        <p>{userMetadata}</p>
       </div>
     )
   );
