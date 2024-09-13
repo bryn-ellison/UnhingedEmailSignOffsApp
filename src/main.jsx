@@ -3,7 +3,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App.jsx";
 import CreateSignOff from "./CreateSignOff.jsx";
 import ErrorPage from "./error-page";
-import Admin from "./AdminArea";
+import AdminArea from "./AdminArea";
 import "./index.css";
 import {
   createRoutesFromElements,
@@ -12,7 +12,6 @@ import {
   Outlet,
   Route,
 } from "react-router-dom";
-import AdminArea from "./AdminArea";
 
 const Auth0ProviderLayout = () => (
   <Auth0Provider
