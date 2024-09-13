@@ -3,7 +3,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App.jsx";
 import CreateSignOff from "./CreateSignOff.jsx";
 import ErrorPage from "./error-page";
-import Admin from "./Admin";
+import Admin from "./AdminArea";
 import "./index.css";
 import {
   createRoutesFromElements,
@@ -12,6 +12,7 @@ import {
   Outlet,
   Route,
 } from "react-router-dom";
+import AdminArea from "./AdminArea";
 
 const Auth0ProviderLayout = () => (
   <Auth0Provider
@@ -19,6 +20,8 @@ const Auth0ProviderLayout = () => (
     clientId="yBHkadJfpzGsft7alJBqteh78Uj5UEMW"
     authorizationParams={{
       redirect_uri: "https://unhingedemailsignoffs.netlify.app/admin",
+      audience: "UnhingedEmailSignOffsApi",
+      scope: "read:signoffs write:signoffs update:signoffs",
     }}
   >
     <Outlet />
@@ -36,30 +39,12 @@ const router = createBrowserRouter(
       ></Route>
       <Route
         path="/admin"
-        element={<Admin />}
+        element={<AdminArea />}
         errorElement={<ErrorPage />}
       ></Route>
     </Route>
   )
 );
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     errorElement: <ErrorPage />,
-//   },
-//   {
-//     path: "/create",
-//     element: <CreateSignOff />,
-//     errorElement: <ErrorPage />,
-//   },
-//   {
-//     path: "/admin",
-//     element: <Admin />,
-//     errorElement: <ErrorPage />,
-//   },
-// ]);
 
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
