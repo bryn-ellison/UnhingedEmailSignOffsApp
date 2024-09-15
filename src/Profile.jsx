@@ -1,37 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-// const Profile = () => {
-//   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-//   const [apiAccessToken, setApiAccessToken] = useState(null);
-
-//   useEffect(() => {
-//     const getUserMetadata = async () => {
-//       try {
-//         const accessToken = await getAccessTokenSilently({
-//           authorizationParams: {
-//             audience: "UnhingedEmailSignOffsApi",
-//             scope: "read:signoffs write:signoffs update:signoffs",
-//           },
-//         });
-//         setApiAccessToken(accessToken);
-//       } catch (e) {
-//         console.log(e.message);
-//       }
-//     };
-
-//     getUserMetadata();
-//   }, [getAccessTokenSilently, user?.sub]);
-
-//   return (
-//     isAuthenticated && (
-//       <div>
-//         <AdminSignOffLists />
-//       </div>
-//     )
-//   );
-// };
-
 const Profile = () => {
   const { getAccessTokenSilently } = useAuth0();
   const [signOffs, setSignOffs] = useState(null);

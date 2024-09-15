@@ -9,6 +9,11 @@ p {
   font-size: 2rem;
 }
 
+li {
+  font-size: 1.1rem;
+  display: inline;
+}
+
 .signOff-container {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.87);

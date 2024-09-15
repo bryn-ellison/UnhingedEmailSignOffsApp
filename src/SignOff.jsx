@@ -14,7 +14,7 @@ const SignOff = () => {
 
   const fetchSignOffData = async () => {
     try {
-      const [response] = await fetcherWithAxios(
+      const response = await fetcherWithAxios(
         `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs`
       );
       setSignOffData(response);
@@ -66,7 +66,8 @@ const SignOff = () => {
       );
     }
   };
-
+  {
+  }
   return (
     <>
       <div className="signOff-container">
