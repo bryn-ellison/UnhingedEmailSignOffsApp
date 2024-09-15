@@ -7,6 +7,7 @@ const Profile = () => {
   const [signOffs, setSignOffs] = useState(null);
   const [listView, setListView] = useState("To Approve");
   const [urlSlug, setUrlSlug] = useState("toapprove");
+  const [signOffId, setSignOffId] = useState();
 
   useEffect(() => {
     (async () => {
@@ -17,14 +18,17 @@ const Profile = () => {
             scope: "read:signoffs write:signoffs update:signoffs",
           },
         });
-        const response = await fetch(
-          `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${urlSlug}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        let callUrl = "";
+        if (signOffId) {
+          callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${signOffId}/${urlSlug}`;
+        } else {
+          callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${urlSlug}`;
+        }
+        const response = await fetch(callUrl, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setSignOffs(await response.json());
       } catch (e) {
         console.error(e);
@@ -32,9 +36,12 @@ const Profile = () => {
     })();
   }, [getAccessTokenSilently, listView]);
 
-  function handleAdminButtonClick(viewName, slug) {
+  function handleAdminButtonClick(viewName, slug, id) {
     setListView(viewName);
     setUrlSlug(slug);
+    if (id) {
+      setSignOffId(id);
+    }
   }
 
   if (!signOffs) {
@@ -67,6 +74,20 @@ const Profile = () => {
             <li key={index}>
               <p className="admin-list-item">{signOff.signOff}</p>
               <p className="admin-list-item">{signOff.author}</p>
+              <div className="admin-buttons-container">
+                <AdminButton
+                  handleAdminButtonClick={handleAdminButtonClick}
+                  buttonText={"Approve"}
+                  slug={"approve"}
+                  id={signOff.id}
+                />
+                <AdminButton
+                  handleAdminButtonClick={handleAdminButtonClick}
+                  buttonText={"Delete"}
+                  slug={"delete"}
+                  id={signOff.id}
+                />
+              </div>
             </li>
           );
         })}
