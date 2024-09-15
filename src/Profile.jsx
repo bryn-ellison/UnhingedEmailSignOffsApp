@@ -42,7 +42,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="admin-container">
+    <div className="form-container">
       <h2>{listView}</h2>
       <div className="admin-buttons-container">
         <AdminButton
@@ -58,15 +58,15 @@ const Profile = () => {
         <AdminButton
           handleAdminButtonClick={handleAdminButtonClick}
           buttonText={"All Approved"}
-          slug={"approved"}
+          slug={"all"}
         />
       </div>
       <ul>
         {signOffs.map((signOff, index) => {
           return (
             <li key={index}>
-              <p>{signOff.signOff}</p>
-              <p>{signOff.author}</p>
+              <p className="admin-list-item">{signOff.signOff}</p>
+              <p className="admin-list-item">{signOff.author}</p>
             </li>
           );
         })}
