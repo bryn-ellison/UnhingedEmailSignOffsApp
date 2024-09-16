@@ -1,5 +1,4 @@
 export async function approveSignOff(token, id) {
-  console.log(id + " code runs to fetch function");
   let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${id}/Approve`;
   const response = await fetch(callUrl, {
     method: "PATCH",
@@ -14,7 +13,7 @@ export async function approveSignOff(token, id) {
 export async function deleteSignOff(token, id) {
   let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${id}`;
   const response = await fetch(callUrl, {
-    method: "PATCH",
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
     },

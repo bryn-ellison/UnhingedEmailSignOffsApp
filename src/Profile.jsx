@@ -48,8 +48,6 @@ const Profile = () => {
         },
       });
       if (buttonText === "Approve") {
-        console.log("APPROVE FIRES");
-        console.log(token);
         await approveSignOff(token, id);
         setAdminTaskCompleted(adminTaskCompleted + 1);
       } else if (buttonText === "Delete") {
@@ -59,8 +57,7 @@ const Profile = () => {
         return "Edit";
       }
     } catch (e) {
-      console.log("error");
-      //console.log(e.message);
+      console.error(e);
     }
   }
   console.log(adminTaskCompleted);
