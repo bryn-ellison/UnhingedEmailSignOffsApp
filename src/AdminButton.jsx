@@ -1,6 +1,6 @@
-const AdminButton = ({ handleAdminButtonClick, buttonText, slug, id }) => {
+const AdminButton = ({ handleAdminButtonClick, buttonText, slug }) => {
   function handleButtonClick() {
-    handleAdminButtonClick(buttonText, slug, id);
+    handleAdminButtonClick(buttonText, slug);
   }
 
   return (

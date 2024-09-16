@@ -28,7 +28,7 @@ const Profile = () => {
         });
         setSignOffs(await response.json());
       } catch (e) {
-        console.error(e);
+        console.error(e.message);
       }
     })();
   }, [getAccessTokenSilently, listView, adminTaskCompleted]);
@@ -56,7 +56,7 @@ const Profile = () => {
         return "Edit";
       }
     } catch (e) {
-      console.error(e);
+      console.error(e.message);
     }
   }
 
