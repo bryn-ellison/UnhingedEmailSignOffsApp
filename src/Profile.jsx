@@ -58,7 +58,7 @@ const Profile = () => {
         return "Edit";
       }
     } catch (e) {
-      console.error(e.message);
+      console.log(e.message);
     }
   }
   console.log(adminTaskCompleted);
