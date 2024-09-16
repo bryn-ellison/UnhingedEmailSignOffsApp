@@ -70,17 +70,17 @@ const Profile = () => {
       <h2>{listView}</h2>
       <div className="admin-buttons-container">
         <AdminButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+          handleAdminButtonClick={handleAdminButtonClick}
           buttonText={"To Approve"}
           slug={"toapprove"}
         />
         <AdminButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+          handleAdminButtonClick={handleAdminButtonClick}
           buttonText={"Deleted"}
           slug={"deleted"}
         />
         <AdminButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+          handleAdminButtonClick={handleAdminButtonClick}
           buttonText={"All Approved"}
           slug={"all"}
         />
@@ -93,17 +93,17 @@ const Profile = () => {
               <p className="admin-list-item">{signOff.author}</p>
               <div className="admin-buttons-container">
                 <AdminTaskButton
-                  handleAdminButtonClick={handleAdminButtonClick}
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Approve"}
                   id={signOff.id}
                 />
                 <AdminTaskButton
-                  handleAdminButtonClick={handleAdminButtonClick}
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Delete"}
                   id={signOff.id}
                 />
                 <AdminTaskButton
-                  handleAdminButtonClick={handleAdminButtonClick}
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Edit"}
                   id={signOff.id}
                 />
