@@ -20,7 +20,7 @@ const Auth0ProviderLayout = () => (
     authorizationParams={{
       redirect_uri: "https://unhingedemailsignoffs.netlify.app/admin",
       audience: "UnhingedEmailSignOffsApi",
-      scope: "read:signoffs write:signoffs update:signoffs",
+      scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
     }}
   >
     <Outlet />
