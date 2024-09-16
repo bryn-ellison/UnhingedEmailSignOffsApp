@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AdminButton from "./AdminButton";
+import AdminTaskButton from "./AdminTaskButton";
 import { approveSignOff, deleteSignOff } from "./DataFunctions";
 
 const Profile = () => {
@@ -91,17 +92,17 @@ const Profile = () => {
               <p className="admin-list-item">{signOff.signOff}</p>
               <p className="admin-list-item">{signOff.author}</p>
               <div className="admin-buttons-container">
-                <AdminButton
+                <AdminTaskButton
                   handleAdminButtonClick={handleAdminButtonClick}
                   buttonText={"Approve"}
                   id={signOff.id}
                 />
-                <AdminButton
+                <AdminTaskButton
                   handleAdminButtonClick={handleAdminButtonClick}
                   buttonText={"Delete"}
                   id={signOff.id}
                 />
-                <AdminButton
+                <AdminTaskButton
                   handleAdminButtonClick={handleAdminButtonClick}
                   buttonText={"Edit"}
                   id={signOff.id}
