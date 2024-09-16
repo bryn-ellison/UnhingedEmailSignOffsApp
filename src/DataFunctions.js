@@ -6,6 +6,7 @@ export async function approveSignOff(token, id) {
       Authorization: `Bearer ${token}`,
     },
   });
+  console.log(response);
   return response;
 }
 

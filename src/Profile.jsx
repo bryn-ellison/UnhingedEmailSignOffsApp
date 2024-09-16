@@ -49,6 +49,7 @@ const Profile = () => {
       });
       if (buttonText === "Approve") {
         await approveSignOff(token, id);
+        console.log("APPROVE FIRES");
         setAdminTaskCompleted(adminTaskCompleted + 1);
       } else if (buttonText === "Delete") {
         await deleteSignOff(token, id);
@@ -60,7 +61,7 @@ const Profile = () => {
       console.error(e.message);
     }
   }
-
+  console.log(adminTaskCompleted);
   if (!signOffs) {
     return <div>Loading...</div>;
   }
