@@ -33,7 +33,7 @@ const FormComponent = ({ handleSubmitForm }) => {
         className="form-fields"
         rows={5}
         name="signOff"
-        placeholder="Enter your message"
+        placeholder="Enter your unhinged email sign off"
         value={formData.message}
         onChange={handleChange}
       />

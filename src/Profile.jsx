@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import AdminButton from "./AdminButton";
 import AdminTaskButton from "./AdminTaskButton";
 import { approveSignOff, deleteSignOff } from "./DataFunctions";
+import EditForm from "./EditForm";
 
 const Profile = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -10,6 +11,7 @@ const Profile = () => {
   const [listView, setListView] = useState("To Approve");
   const [urlSlug, setUrlSlug] = useState("toapprove");
   const [adminTaskCompleted, setAdminTaskCompleted] = useState(0);
+  const [isEditSignOffOpen, setIsEditSignOffOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -39,6 +41,10 @@ const Profile = () => {
     setUrlSlug(slug);
   }
 
+  function handleEditForm() {
+    setIsEditSignOffOpen(false);
+  }
+
   async function handleAdminTaskButtonClick(buttonText, id) {
     try {
       const token = await getAccessTokenSilently({
@@ -54,7 +60,7 @@ const Profile = () => {
         await deleteSignOff(token, id);
         setAdminTaskCompleted(adminTaskCompleted + 1);
       } else {
-        return "Edit";
+        setIsEditSignOffOpen(true);
       }
     } catch (e) {
       console.error(e);
@@ -112,6 +118,7 @@ const Profile = () => {
           );
         })}
       </ul>
+      {isEditSignOffOpen && <EditForm handleEditForm={handleEditForm} />}
     </div>
   );
 };
