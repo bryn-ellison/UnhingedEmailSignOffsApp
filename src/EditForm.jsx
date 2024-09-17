@@ -36,7 +36,7 @@ const EditForm = ({ handleEditForm, signOff }) => {
   };
 
   return (
-    <>
+    <div className="edit-form-container">
       <div className="form-container">
         <form onSubmit={handleSubmit} id="submit-edit-form">
           <textarea
@@ -62,7 +62,7 @@ const EditForm = ({ handleEditForm, signOff }) => {
           Submit
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

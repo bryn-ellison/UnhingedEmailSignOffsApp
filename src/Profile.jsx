@@ -114,11 +114,13 @@ const Profile = () => {
                   id={signOff.id}
                 />
               </div>
+              {isEditSignOffOpen && (
+                <EditForm handleEditForm={handleEditForm} signOff={signOff} />
+              )}
             </li>
           );
         })}
       </ul>
-      {isEditSignOffOpen && <EditForm handleEditForm={handleEditForm} />}
     </div>
   );
 };
