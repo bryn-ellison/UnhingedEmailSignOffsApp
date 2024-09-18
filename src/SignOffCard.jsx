@@ -9,7 +9,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     author: signOff.author,
   });
   const { getAccessTokenSilently } = useAuth0();
-  const [isEditSignOffOpen, setIsEditSignOffOpen] = useAuth0(false);
+  const [isEditSignOffOpen, setIsEditSignOffOpen] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,30 +39,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     }
   };
 
-  // async function handleAdminTaskButtonClick(buttonText) {
-  //   console.log("THIS SHOULDNT FIRE");
-  // try {
-  //   const token = await getAccessTokenSilently({
-  //     authorizationParams: {
-  //       audience: "UnhingedEmailSignOffsApi",
-  //       scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-  //     },
-  //   });
-  // if (buttonText === "Approve") {
-  //   //await approveSignOff(token, signOff.id);
-  //   return setAdminTaskCompleted(() => adminTaskCompleted + 1);
-  // } else if (buttonText === "Delete") {
-  //   //await deleteSignOff(token, signOff.id);
-  //   return setAdminTaskCompleted(() => adminTaskCompleted + 1);
-  // } else {
-  //   return setIsEditSignOffOpen(() => true);
-  // }
-  // } catch (e) {
-  //   console.error(e);
-  // }
-  // }
-
-  async function handleApproveTask() {
+  async function handleAdminTaskButtonClick(buttonText) {
     try {
       const token = await getAccessTokenSilently({
         authorizationParams: {
@@ -70,50 +47,72 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
           scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
         },
       });
-      await approveSignOff(token, signOff.id);
-      handleTaskButtonClick();
+      if (buttonText === "Approve") {
+        await approveSignOff(token, signOff.id);
+        handleTaskButtonClick();
+      } else if (buttonText === "Delete") {
+        await deleteSignOff(token, signOff.id);
+        handleTaskButtonClick();
+      } else {
+        setIsEditSignOffOpen((prevState) => !prevState);
+      }
     } catch (e) {
       console.error(e);
     }
   }
 
-  async function handleDeleteTask() {
-    try {
-      const token = await getAccessTokenSilently({
-        authorizationParams: {
-          audience: "UnhingedEmailSignOffsApi",
-          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-        },
-      });
-      await deleteSignOff(token, signOff.id);
-      handleTaskButtonClick();
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  // async function handleApproveTask() {
+  //   try {
+  //     const token = await getAccessTokenSilently({
+  //       authorizationParams: {
+  //         audience: "UnhingedEmailSignOffsApi",
+  //         scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+  //       },
+  //     });
+  //     await approveSignOff(token, signOff.id);
+  //     handleTaskButtonClick();
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
 
-  function handleEditTask() {
-    setIsEditSignOffOpen((prevState) => !prevState);
-  }
+  // async function handleDeleteTask() {
+  //   try {
+  //     const token = await getAccessTokenSilently({
+  //       authorizationParams: {
+  //         audience: "UnhingedEmailSignOffsApi",
+  //         scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+  //       },
+  //     });
+  //     await deleteSignOff(token, signOff.id);
+  //     handleTaskButtonClick();
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
 
-  console.log(isEditSignOffOpen);
+  // function handleEditTask() {
+  //   setIsEditSignOffOpen((prevState) => !prevState);
+  // }
+
+  // console.log(isEditSignOffOpen);
 
   return (
-    <div className="signoff-card">
-      <p className="admin-list-item">{signOff.signOff}</p>
-      <p className="admin-list-item">{signOff.author}</p>
-      <div className="admin-buttons-container">
-        <button className="ui-btn" onClick={handleApproveTask}>
-          Approve
-        </button>
-        <button className="ui-btn" onClick={handleDeleteTask}>
-          Delete
-        </button>
-        <button className="ui-btn" onClick={handleEditTask}>
-          Edit
-        </button>
-      </div>
-    </div>
+    // <div className="signoff-card">
+    //   <p className="admin-list-item">{signOff.signOff}</p>
+    //   <p className="admin-list-item">{signOff.author}</p>
+    //   <div className="admin-buttons-container">
+    //     <button className="ui-btn" onClick={handleApproveTask}>
+    //       Approve
+    //     </button>
+    //     <button className="ui-btn" onClick={handleDeleteTask}>
+    //       Delete
+    //     </button>
+    //     <button className="ui-btn" onClick={handleEditTask}>
+    //       Edit
+    //     </button>
+    //   </div>
+    // </div>
 
     // <div className="signOff-container">
     //   <div className="signoff-card">
@@ -121,55 +120,55 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     //     <p className="admin-list-item">{signOff.author}</p>
 
     //   </div>
-
-    // {/* {!isEditSignOffOpen ? (
-    //   <div className="signoff-card">
-    //     <p className="admin-list-item">{signOff.signOff}</p>
-    //     <p className="admin-list-item">{signOff.author}</p>
-    //     {listView === "To Approve" ? (
-    //       <div className="admin-buttons-container">
-    //         <AdminTaskButton
-    //           handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-    //           buttonText={"Approve"}
-    //         />
-    //         <AdminTaskButton
-    //           handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-    //           buttonText={"Delete"}
-    //         />
-    //         <AdminTaskButton
-    //           handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-    //           buttonText={"Edit"}
-    //         />
-    //       </div>
-    //     ) : (
-    //       <></>
-    //     )}
-    //   </div>
-    // ) : (
-    //   <form onSubmit={handleSubmit} id="submit-edit-form">
-    //     <textarea
-    //       className="form-fields"
-    //       rows={5}
-    //       name="signOff"
-    //       value={signOff.signOff}
-    //       onChange={handleChange}
-    //     />
-    //     <input
-    //       className="form-fields"
-    //       type="text"
-    //       name="author"
-    //       value={signOff.author}
-    //       onChange={handleChange}
-    //     />
-    //     <button className="ui-btn" form="submit-edit-form" type="submit">
-    //       Submit
-    //     </button>
-    //     <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
-    //       Cancel
-    //     </button>
-    //   </form>
-    // )} */}
-    // </div>
+    <div className="signOff-container">
+      {!isEditSignOffOpen ? (
+        <div className="signoff-card">
+          <p className="admin-list-item">{signOff.signOff}</p>
+          <p className="admin-list-item">{signOff.author}</p>
+          {listView === "To Approve" ? (
+            <div className="admin-buttons-container">
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Approve"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Delete"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Edit"}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} id="submit-edit-form">
+          <textarea
+            className="form-fields"
+            rows={5}
+            name="signOff"
+            value={signOff.signOff}
+            onChange={handleChange}
+          />
+          <input
+            className="form-fields"
+            type="text"
+            name="author"
+            value={signOff.author}
+            onChange={handleChange}
+          />
+          <button className="ui-btn" form="submit-edit-form" type="submit">
+            Submit
+          </button>
+          <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
+            Cancel
+          </button>
+        </form>
+      )}
+    </div>
   );
 };
 
