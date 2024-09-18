@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import AdminTaskButton from "./AdminTaskButton";
 import { approveSignOff, deleteSignOff } from "./DataFunctions";
 
-const SignOffCard = ({ signOff, index, listView }) => {
+const SignOffCard = ({ signOff, listView }) => {
   const [formData, setFormData] = useState({
     signOff: signOff.signOff,
     author: signOff.author,

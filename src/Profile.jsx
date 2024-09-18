@@ -66,7 +66,8 @@ const Profile = () => {
         {signOffs.map((signOff, index) => {
           return (
             <li key={index}>
-              <SignOffCard signOff={signOff} listView={listView} />
+              <p>{signOff.signOff}</p>
+              {/* <SignOffCard signOff={signOff} listView={listView} /> */}
             </li>
           );
         })}
