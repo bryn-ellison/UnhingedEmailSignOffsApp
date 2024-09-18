@@ -36,6 +36,7 @@ const FormComponent = ({ handleSubmitForm }) => {
         placeholder="Enter your unhinged email sign off"
         value={formData.message}
         onChange={handleChange}
+        maxLength={499}
       />
       <input
         className="form-fields"
@@ -44,6 +45,7 @@ const FormComponent = ({ handleSubmitForm }) => {
         placeholder="Enter your name"
         value={formData.name}
         onChange={handleChange}
+        maxLength={99}
       />
     </form>
   );

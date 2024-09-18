@@ -31,7 +31,7 @@ const Profile = () => {
         console.error(e.message);
       }
     })();
-  }, [getAccessTokenSilently, listView, adminTaskCompleted]);
+  }, [getAccessTokenSilently, listView]);
 
   function handleAdminButtonClick(viewName, slug) {
     setListView(viewName);

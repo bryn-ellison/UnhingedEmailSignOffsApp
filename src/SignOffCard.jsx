@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import AdminTaskButton from "./AdminTaskButton";
 import { approveSignOff, deleteSignOff } from "./DataFunctions";
 
-const SignOffCard = ({ handleEditForm, signOff, listView }) => {
+const SignOffCard = ({ signOff, index, listView }) => {
   const [formData, setFormData] = useState({
     signOff: signOff.signOff,
     author: signOff.author,
@@ -26,15 +26,15 @@ const SignOffCard = ({ handleEditForm, signOff, listView }) => {
           scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
         },
       });
-      let callUrl =
-        "https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/";
+      let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${signOff.id}`;
       const response = await fetch(callUrl, {
         method: "PATCH",
+        body: JSON.stringify(formData),
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      handleEditForm();
+      setIsEditSignOffOpen(false);
     } catch (e) {
       console.error(e.message);
     }
@@ -65,7 +65,7 @@ const SignOffCard = ({ handleEditForm, signOff, listView }) => {
   return (
     <div className="edit-form-container">
       <li key={index}>
-        {!setIsEditSignOffOpen ? (
+        {!isEditSignOffOpen ? (
           <div className="signoff-card">
             <p className="admin-list-item">{signOff.signOff}</p>
             <p className="admin-list-item">{signOff.author}</p>
