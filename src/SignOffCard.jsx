@@ -41,25 +41,25 @@ const SignOffCard = ({ signOff, listView }) => {
   };
 
   async function handleAdminTaskButtonClick(buttonText) {
-    try {
-      const token = await getAccessTokenSilently({
-        authorizationParams: {
-          audience: "UnhingedEmailSignOffsApi",
-          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-        },
-      });
-      if (buttonText === "Approve") {
-        await approveSignOff(token, signOff.id);
-        setAdminTaskCompleted(adminTaskCompleted + 1);
-      } else if (buttonText === "Delete") {
-        await deleteSignOff(token, signOff.id);
-        setAdminTaskCompleted(adminTaskCompleted + 1);
-      } else {
-        setIsEditSignOffOpen(true);
-      }
-    } catch (e) {
-      console.error(e);
+    // try {
+    //   const token = await getAccessTokenSilently({
+    //     authorizationParams: {
+    //       audience: "UnhingedEmailSignOffsApi",
+    //       scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+    //     },
+    //   });
+    if (buttonText === "Approve") {
+      //await approveSignOff(token, signOff.id);
+      setAdminTaskCompleted(adminTaskCompleted + 1);
+    } else if (buttonText === "Delete") {
+      //await deleteSignOff(token, signOff.id);
+      setAdminTaskCompleted(adminTaskCompleted + 1);
+    } else {
+      setIsEditSignOffOpen(true);
     }
+    // } catch (e) {
+    //   console.error(e);
+    // }
   }
 
   return (
