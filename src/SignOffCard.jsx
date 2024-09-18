@@ -40,27 +40,42 @@ const SignOffCard = ({ signOff, listView }) => {
     }
   };
 
-  async function handleAdminTaskButtonClick(buttonText) {
-    console.log("THIS SHOULDNT FIRE");
-    // try {
-    //   const token = await getAccessTokenSilently({
-    //     authorizationParams: {
-    //       audience: "UnhingedEmailSignOffsApi",
-    //       scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-    //     },
-    //   });
-    if (buttonText === "Approve") {
-      //await approveSignOff(token, signOff.id);
-      return setAdminTaskCompleted(() => adminTaskCompleted + 1);
-    } else if (buttonText === "Delete") {
-      //await deleteSignOff(token, signOff.id);
-      return setAdminTaskCompleted(() => adminTaskCompleted + 1);
-    } else {
-      return setIsEditSignOffOpen(() => true);
+  // async function handleAdminTaskButtonClick(buttonText) {
+  //   console.log("THIS SHOULDNT FIRE");
+  // try {
+  //   const token = await getAccessTokenSilently({
+  //     authorizationParams: {
+  //       audience: "UnhingedEmailSignOffsApi",
+  //       scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+  //     },
+  //   });
+  // if (buttonText === "Approve") {
+  //   //await approveSignOff(token, signOff.id);
+  //   return setAdminTaskCompleted(() => adminTaskCompleted + 1);
+  // } else if (buttonText === "Delete") {
+  //   //await deleteSignOff(token, signOff.id);
+  //   return setAdminTaskCompleted(() => adminTaskCompleted + 1);
+  // } else {
+  //   return setIsEditSignOffOpen(() => true);
+  // }
+  // } catch (e) {
+  //   console.error(e);
+  // }
+  // }
+
+  async function handleApproveTask() {
+    try {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: "UnhingedEmailSignOffsApi",
+          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+        },
+      });
+      await approveSignOff(token, signOff.id);
+      setAdminTaskCompleted(() => adminTaskCompleted + 1);
+    } catch (e) {
+      console.error(e);
     }
-    // } catch (e) {
-    //   console.error(e);
-    // }
   }
 
   return (
@@ -68,22 +83,13 @@ const SignOffCard = ({ signOff, listView }) => {
       <p className="admin-list-item">{signOff.signOff}</p>
       <p className="admin-list-item">{signOff.author}</p>
       <div className="admin-buttons-container">
-        <button
-          className="ui-btn"
-          onClick={() => handleAdminTaskButtonClick("Approve")}
-        >
+        <button className="ui-btn" onClick={handleApproveTask}>
           Approve
         </button>
-        <button
-          className="ui-btn"
-          onClick={() => handleAdminTaskButtonClick("Delete")}
-        >
+        <button className="ui-btn" onClick={handleApproveTask}>
           Delete
         </button>
-        <button
-          className="ui-btn"
-          onClick={() => handleAdminTaskButtonClick("Edit")}
-        >
+        <button className="ui-btn" onClick={handleApproveTask}>
           Edit
         </button>
       </div>
