@@ -167,7 +167,10 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
           <button className="ui-btn" form="submit-edit-form" type="submit">
             Submit
           </button>
-          <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
+          <button
+            className="ui-btn"
+            onClick={() => setIsEditSignOffOpen((prevState) => !prevState)}
+          >
             Cancel
           </button>
         </form>
