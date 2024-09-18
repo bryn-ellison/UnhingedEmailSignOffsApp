@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import AdminButton from "./AdminButton";
-
 import SignOffCard from "./SignOffCard";
 
 const Profile = () => {
@@ -66,8 +65,7 @@ const Profile = () => {
         {signOffs.map((signOff, index) => {
           return (
             <li key={index}>
-              <p>{signOff.signOff}</p>
-              {/* <SignOffCard signOff={signOff} listView={listView} /> */}
+              <SignOffCard signOff={signOff} listView={listView} />
             </li>
           );
         })}
