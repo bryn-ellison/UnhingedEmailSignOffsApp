@@ -41,7 +41,7 @@ const SignOffCard = ({ signOff, listView }) => {
   };
 
   async function handleAdminTaskButtonClick(buttonText) {
-    console.log("FIRES");
+    return console.log("FIRES");
     // try {
     //   const token = await getAccessTokenSilently({
     //     authorizationParams: {
