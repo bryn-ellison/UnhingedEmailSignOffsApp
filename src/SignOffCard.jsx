@@ -152,27 +152,29 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
         >
           <textarea
             className="form-fields"
-            rows={5}
+            rows={3}
             name="signOff"
-            value={signOff.signOff}
+            value={formData.signOff}
             onChange={handleChange}
           />
           <input
             className="form-fields"
             type="text"
             name="author"
-            value={signOff.author}
+            value={formData.author}
             onChange={handleChange}
           />
-          <button className="ui-btn" form="submit-edit-form" type="submit">
-            Submit
-          </button>
-          <button
-            className="ui-btn"
-            onClick={() => setIsEditSignOffOpen((prevState) => !prevState)}
-          >
-            Cancel
-          </button>
+          <div className="admin-buttons-container">
+            <button className="ui-btn" form="submit-edit-form" type="submit">
+              Submit
+            </button>
+            <button
+              className="ui-btn"
+              onClick={() => setIsEditSignOffOpen((prevState) => !prevState)}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       )}
     </div>
