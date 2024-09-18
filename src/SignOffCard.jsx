@@ -95,7 +95,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
   //   setIsEditSignOffOpen((prevState) => !prevState);
   // }
 
-  // console.log(isEditSignOffOpen);
+  console.log(isEditSignOffOpen);
 
   return (
     // <div className="signoff-card">
@@ -120,9 +120,9 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     //     <p className="admin-list-item">{signOff.author}</p>
 
     //   </div>
-    <div className="signOff-container">
+    <div className="signOff-card">
       {!isEditSignOffOpen ? (
-        <div className="signoff-card">
+        <div>
           <p className="admin-list-item">{signOff.signOff}</p>
           <p className="admin-list-item">{signOff.author}</p>
           {listView === "To Approve" ? (
@@ -145,7 +145,11 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
           )}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} id="submit-edit-form">
+        <form
+          onSubmit={handleSubmit}
+          id="submit-edit-form"
+          className="signOff-card"
+        >
           <textarea
             className="form-fields"
             rows={5}

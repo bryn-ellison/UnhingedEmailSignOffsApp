@@ -30,6 +30,11 @@ li {
   min-height: 300px;
 }
 
+.signOff-card {
+  width: auto;
+  padding: 1rem;
+}
+
 .form-container {
   border: 1px solid rgba(255, 255, 255, 0.87);
   padding: 1rem;
