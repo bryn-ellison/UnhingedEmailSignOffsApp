@@ -63,57 +63,55 @@ const SignOffCard = ({ signOff, index, listView }) => {
   }
 
   return (
-    <li key={index}>
-      <div className="signOff-container">
-        {!isEditSignOffOpen ? (
-          <div className="signoff-card">
-            <p className="admin-list-item">{signOff.signOff}</p>
-            <p className="admin-list-item">{signOff.author}</p>
-            {listView === "To Approve" ? (
-              <div className="admin-buttons-container">
-                <AdminTaskButton
-                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                  buttonText={"Approve"}
-                />
-                <AdminTaskButton
-                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                  buttonText={"Delete"}
-                />
-                <AdminTaskButton
-                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                  buttonText={"Edit"}
-                />
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} id="submit-edit-form">
-            <textarea
-              className="form-fields"
-              rows={5}
-              name="signOff"
-              value={signOff.signOff}
-              onChange={handleChange}
-            />
-            <input
-              className="form-fields"
-              type="text"
-              name="author"
-              value={signOff.author}
-              onChange={handleChange}
-            />
-            <button className="ui-btn" form="submit-edit-form" type="submit">
-              Submit
-            </button>
-            <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
-              Cancel
-            </button>
-          </form>
-        )}
-      </div>
-    </li>
+    <div className="signOff-container">
+      {!isEditSignOffOpen ? (
+        <div className="signoff-card">
+          <p className="admin-list-item">{signOff.signOff}</p>
+          <p className="admin-list-item">{signOff.author}</p>
+          {listView === "To Approve" ? (
+            <div className="admin-buttons-container">
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Approve"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Delete"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Edit"}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} id="submit-edit-form">
+          <textarea
+            className="form-fields"
+            rows={5}
+            name="signOff"
+            value={signOff.signOff}
+            onChange={handleChange}
+          />
+          <input
+            className="form-fields"
+            type="text"
+            name="author"
+            value={signOff.author}
+            onChange={handleChange}
+          />
+          <button className="ui-btn" form="submit-edit-form" type="submit">
+            Submit
+          </button>
+          <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
+            Cancel
+          </button>
+        </form>
+      )}
+    </div>
   );
 };
 
