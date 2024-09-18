@@ -28,12 +28,16 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
       let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${signOff.id}`;
       const response = await fetch(callUrl, {
         method: "PATCH",
-        body: formData,
+        body: JSON.stringify({
+          signOff: formData.signOff,
+          author: formData.author,
+        }),
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setIsEditSignOffOpen(false);
+      setIsEditSignOffOpen((prevState) => !prevState);
+      return response;
     } catch (e) {
       console.error(e.message);
     }
