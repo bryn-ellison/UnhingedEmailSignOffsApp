@@ -8,7 +8,6 @@ const SignOffCard = ({ signOff, listView }) => {
     signOff: signOff.signOff,
     author: signOff.author,
   });
-  console.log(formData);
   const { getAccessTokenSilently } = useAuth0();
   const [adminTaskCompleted, setAdminTaskCompleted] = useState(0);
   const [isEditSignOffOpen, setIsEditSignOffOpen] = useAuth0(false);
