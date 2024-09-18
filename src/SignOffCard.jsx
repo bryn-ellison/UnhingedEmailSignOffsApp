@@ -72,7 +72,22 @@ const SignOffCard = ({ signOff, listView }) => {
         },
       });
       await approveSignOff(token, signOff.id);
-      setAdminTaskCompleted(() => adminTaskCompleted + 1);
+      setAdminTaskCompleted((prevCount) => prevCount + 1);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function handleDeleteTask() {
+    try {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: "UnhingedEmailSignOffsApi",
+          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+        },
+      });
+      await deleteSignOff(token, signOff.id);
+      setAdminTaskCompleted((prevCount) => prevCount + 1);
     } catch (e) {
       console.error(e);
     }
@@ -86,7 +101,7 @@ const SignOffCard = ({ signOff, listView }) => {
         <button className="ui-btn" onClick={handleApproveTask}>
           Approve
         </button>
-        <button className="ui-btn" onClick={handleApproveTask}>
+        <button className="ui-btn" onClick={handleDeleteTask}>
           Delete
         </button>
         <button className="ui-btn" onClick={handleApproveTask}>
