@@ -51,12 +51,12 @@ const SignOffCard = ({ signOff, listView }) => {
     //   });
     if (buttonText === "Approve") {
       //await approveSignOff(token, signOff.id);
-      setAdminTaskCompleted(adminTaskCompleted + 1);
+      return setAdminTaskCompleted(adminTaskCompleted + 1);
     } else if (buttonText === "Delete") {
       //await deleteSignOff(token, signOff.id);
-      setAdminTaskCompleted(adminTaskCompleted + 1);
+      return setAdminTaskCompleted(adminTaskCompleted + 1);
     } else {
-      setIsEditSignOffOpen(true);
+      return setIsEditSignOffOpen(true);
     }
     // } catch (e) {
     //   console.error(e);
