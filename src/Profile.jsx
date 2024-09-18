@@ -71,7 +71,7 @@ const Profile = () => {
           return (
             <li key={index}>
               <SignOffCard
-                handleTaskButtonClick={handleAdminButtonClick}
+                handleTaskButtonClick={handleTaskButtonClick}
                 signOff={signOff}
                 listView={listView}
               />
