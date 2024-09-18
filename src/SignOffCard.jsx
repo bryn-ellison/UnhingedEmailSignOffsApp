@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import AdminTaskButton from "./AdminTaskButton";
+import { approveSignOff, deleteSignOff } from "./DataFunctions";
+
+const SignOffCard = ({ handleEditForm, signOff, listView }) => {
+  const [formData, setFormData] = useState({
+    signOff: signOff.signOff,
+    author: signOff.author,
+  });
+  const { getAccessTokenSilently } = useAuth0();
+  const [adminTaskCompleted, setAdminTaskCompleted] = useState(0);
+  const [isEditSignOffOpen, setIsEditSignOffOpen] = useAuth0(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: "UnhingedEmailSignOffsApi",
+          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+        },
+      });
+      let callUrl =
+        "https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/";
+      const response = await fetch(callUrl, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      handleEditForm();
+    } catch (e) {
+      console.error(e.message);
+    }
+  };
+
+  async function handleAdminTaskButtonClick(buttonText, id) {
+    try {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: "UnhingedEmailSignOffsApi",
+          scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
+        },
+      });
+      if (buttonText === "Approve") {
+        await approveSignOff(token, id);
+        setAdminTaskCompleted(adminTaskCompleted + 1);
+      } else if (buttonText === "Delete") {
+        await deleteSignOff(token, id);
+        setAdminTaskCompleted(adminTaskCompleted + 1);
+      } else {
+        setIsEditSignOffOpen(true);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  return (
+    <div className="edit-form-container">
+      <li key={index}>
+        {!setIsEditSignOffOpen ? (
+          <div className="signoff-card">
+            <p className="admin-list-item">{signOff.signOff}</p>
+            <p className="admin-list-item">{signOff.author}</p>
+            {listView === "To Approve" ? (
+              <div className="admin-buttons-container">
+                <AdminTaskButton
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                  buttonText={"Approve"}
+                  id={signOff.id}
+                />
+                <AdminTaskButton
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                  buttonText={"Delete"}
+                  id={signOff.id}
+                />
+                <AdminTaskButton
+                  handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                  buttonText={"Edit"}
+                  id={signOff.id}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} id="submit-edit-form">
+            <textarea
+              className="form-fields"
+              rows={5}
+              name="signOff"
+              value={signOff.signOff}
+              onChange={handleChange}
+            />
+            <input
+              className="form-fields"
+              type="text"
+              name="author"
+              value={signOff.author}
+              onChange={handleChange}
+            />
+            <button className="ui-btn" form="submit-edit-form" type="submit">
+              Submit
+            </button>
+            <button className="ui-btn" onClick={setIsEditSignOffOpen(false)}>
+              Cancel
+            </button>
+          </form>
+        )}
+      </li>
+    </div>
+  );
+};
+
+export default SignOffCard;
