@@ -3,13 +3,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import AdminTaskButton from "./AdminTaskButton";
 import { approveSignOff, deleteSignOff } from "./DataFunctions";
 
-const SignOffCard = ({ signOff, listView }) => {
+const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
   const [formData, setFormData] = useState({
     signOff: signOff.signOff,
     author: signOff.author,
   });
   const { getAccessTokenSilently } = useAuth0();
-  const [adminTaskCompleted, setAdminTaskCompleted] = useState(0);
   const [isEditSignOffOpen, setIsEditSignOffOpen] = useAuth0(false);
 
   const handleChange = (e) => {
@@ -72,7 +71,7 @@ const SignOffCard = ({ signOff, listView }) => {
         },
       });
       await approveSignOff(token, signOff.id);
-      setAdminTaskCompleted((prevCount) => prevCount + 1);
+      handleTaskButtonClick();
     } catch (e) {
       console.error(e);
     }
@@ -87,7 +86,7 @@ const SignOffCard = ({ signOff, listView }) => {
         },
       });
       await deleteSignOff(token, signOff.id);
-      setAdminTaskCompleted((prevCount) => prevCount + 1);
+      handleTaskButtonClick();
     } catch (e) {
       console.error(e);
     }

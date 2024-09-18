@@ -8,6 +8,7 @@ const Profile = () => {
   const [signOffs, setSignOffs] = useState(null);
   const [listView, setListView] = useState("To Approve");
   const [urlSlug, setUrlSlug] = useState("toapprove");
+  const [adminTaskCompleted, setAdminTaskCompleted] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -35,6 +36,10 @@ const Profile = () => {
   function handleAdminButtonClick(viewName, slug) {
     setListView(viewName);
     setUrlSlug(slug);
+  }
+
+  function handleTaskButtonClick() {
+    setAdminTaskCompleted((prevCount) => prevCount + 1);
   }
 
   if (!signOffs) {
@@ -65,7 +70,11 @@ const Profile = () => {
         {signOffs.map((signOff, index) => {
           return (
             <li key={index}>
-              <SignOffCard signOff={signOff} listView={listView} />
+              <SignOffCard
+                handleTaskButtonClick={handleAdminButtonClick}
+                signOff={signOff}
+                listView={listView}
+              />
             </li>
           );
         })}
