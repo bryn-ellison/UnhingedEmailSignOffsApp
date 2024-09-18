@@ -67,18 +67,21 @@ const SignOffCard = ({ signOff, listView }) => {
       <p className="admin-list-item">{signOff.signOff}</p>
       <p className="admin-list-item">{signOff.author}</p>
       <div className="admin-buttons-container">
-        <AdminTaskButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-          buttonText={"Approve"}
-        />
-        <AdminTaskButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-          buttonText={"Delete"}
-        />
-        <AdminTaskButton
-          handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-          buttonText={"Edit"}
-        />
+        <button
+          className="ui-btn"
+          onClick={handleAdminTaskButtonClick("Approve")}
+        >
+          Approve
+        </button>
+        <button
+          className="ui-btn"
+          onClick={handleAdminTaskButtonClick("Delete")}
+        >
+          Delete
+        </button>
+        <button className="ui-btn" onClick={handleAdminTaskButtonClick("Edit")}>
+          Edit
+        </button>
       </div>
     </div>
 
