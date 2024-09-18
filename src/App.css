@@ -33,13 +33,6 @@ li {
   min-height: 300px;
 }
 
-.edit-form-container {
-  position: absolute;
-  width: 600px;
-  height: 300px;
-  z-index: 10;
-}
-
 form {
   display: flex;
   flex-direction: column;

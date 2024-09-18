@@ -40,7 +40,7 @@ const SignOffCard = ({ signOff, index, listView }) => {
     }
   };
 
-  async function handleAdminTaskButtonClick(buttonText, id) {
+  async function handleAdminTaskButtonClick(buttonText) {
     try {
       const token = await getAccessTokenSilently({
         authorizationParams: {
@@ -49,10 +49,10 @@ const SignOffCard = ({ signOff, index, listView }) => {
         },
       });
       if (buttonText === "Approve") {
-        await approveSignOff(token, id);
+        await approveSignOff(token, signOff.id);
         setAdminTaskCompleted(adminTaskCompleted + 1);
       } else if (buttonText === "Delete") {
-        await deleteSignOff(token, id);
+        await deleteSignOff(token, signOff.id);
         setAdminTaskCompleted(adminTaskCompleted + 1);
       } else {
         setIsEditSignOffOpen(true);
@@ -63,8 +63,8 @@ const SignOffCard = ({ signOff, index, listView }) => {
   }
 
   return (
-    <div className="edit-form-container">
-      <li key={index}>
+    <li key={index}>
+      <div className="signOff-container">
         {!isEditSignOffOpen ? (
           <div className="signoff-card">
             <p className="admin-list-item">{signOff.signOff}</p>
@@ -74,17 +74,14 @@ const SignOffCard = ({ signOff, index, listView }) => {
                 <AdminTaskButton
                   handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Approve"}
-                  id={signOff.id}
                 />
                 <AdminTaskButton
                   handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Delete"}
-                  id={signOff.id}
                 />
                 <AdminTaskButton
                   handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                   buttonText={"Edit"}
-                  id={signOff.id}
                 />
               </div>
             ) : (
@@ -115,8 +112,8 @@ const SignOffCard = ({ signOff, index, listView }) => {
             </button>
           </form>
         )}
-      </li>
-    </div>
+      </div>
+    </li>
   );
 };
 
