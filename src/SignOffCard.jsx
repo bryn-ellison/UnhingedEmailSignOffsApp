@@ -64,7 +64,10 @@ const SignOffCard = ({ signOff, listView }) => {
   }
 
   return (
-    <p className="admin-list-item">{signOff.signOff}</p>
+    <div className="signoff-card">
+      <p className="admin-list-item">{signOff.signOff}</p>
+      <p className="admin-list-item">{signOff.author}</p>
+    </div>
     // <div className="signOff-container">
     //   <div className="signoff-card">
     //     <p className="admin-list-item">{signOff.signOff}</p>
