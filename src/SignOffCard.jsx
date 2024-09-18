@@ -68,24 +68,21 @@ const SignOffCard = ({ signOff, listView }) => {
       <div className="signoff-card">
         <p className="admin-list-item">{signOff.signOff}</p>
         <p className="admin-list-item">{signOff.author}</p>
-        {listView === "To Approve" ? (
-          <div className="admin-buttons-container">
-            <AdminTaskButton
-              handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-              buttonText={"Approve"}
-            />
-            <AdminTaskButton
-              handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-              buttonText={"Delete"}
-            />
-            <AdminTaskButton
-              handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-              buttonText={"Edit"}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
+
+        <div className="admin-buttons-container">
+          <AdminTaskButton
+            handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+            buttonText={"Approve"}
+          />
+          <AdminTaskButton
+            handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+            buttonText={"Delete"}
+          />
+          <AdminTaskButton
+            handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+            buttonText={"Edit"}
+          />
+        </div>
       </div>
       {/* {!isEditSignOffOpen ? (
         <div className="signoff-card">
