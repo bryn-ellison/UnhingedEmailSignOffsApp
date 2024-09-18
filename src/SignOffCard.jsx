@@ -92,6 +92,12 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     }
   }
 
+  function handleEditTask() {
+    setIsEditSignOffOpen((prevState) => !prevState);
+  }
+
+  console.log(isEditSignOffOpen);
+
   return (
     <div className="signoff-card">
       <p className="admin-list-item">{signOff.signOff}</p>
@@ -103,7 +109,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
         <button className="ui-btn" onClick={handleDeleteTask}>
           Delete
         </button>
-        <button className="ui-btn" onClick={handleApproveTask}>
+        <button className="ui-btn" onClick={handleEditTask}>
           Edit
         </button>
       </div>
