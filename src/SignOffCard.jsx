@@ -41,7 +41,7 @@ const SignOffCard = ({ signOff, listView }) => {
   };
 
   async function handleAdminTaskButtonClick(buttonText) {
-    return console.log("FIRES");
+    console.log(buttonText);
     // try {
     //   const token = await getAccessTokenSilently({
     //     authorizationParams: {
@@ -70,17 +70,20 @@ const SignOffCard = ({ signOff, listView }) => {
       <div className="admin-buttons-container">
         <button
           className="ui-btn"
-          onClick={handleAdminTaskButtonClick("Approve")}
+          onClick={() => handleAdminTaskButtonClick("Approve")}
         >
           Approve
         </button>
         <button
           className="ui-btn"
-          onClick={handleAdminTaskButtonClick("Delete")}
+          onClick={() => handleAdminTaskButtonClick("Delete")}
         >
           Delete
         </button>
-        <button className="ui-btn" onClick={handleAdminTaskButtonClick("Edit")}>
+        <button
+          className="ui-btn"
+          onClick={() => handleAdminTaskButtonClick("Edit")}
+        >
           Edit
         </button>
       </div>
