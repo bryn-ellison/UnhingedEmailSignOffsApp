@@ -44,13 +44,13 @@ const CreateSignOff = () => {
   };
 
   return (
-    <>
-      <div className="form-container">{displayForm()}</div>
+    <div className="content-container">
+      <div className="signOff-container">{displayForm()}</div>
       <div className="buttons-container">
         {displayButtons()}
         <NavigateButton page={"/"} buttonText={"Go back"} />
       </div>
-    </>
+    </div>
   );
 };
 
