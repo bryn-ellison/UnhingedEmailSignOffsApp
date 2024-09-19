@@ -26,17 +26,20 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
         },
       });
       let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${signOff.id}`;
+      const patchData = JSON.stringify({
+        signOff: formData.signOff,
+        author: formData.author,
+      });
+      console.log(patchData);
       const response = await fetch(callUrl, {
         method: "PATCH",
-        body: JSON.stringify({
-          signOff: formData.signOff,
-          author: formData.author,
-        }),
+        body: patchData,
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setIsEditSignOffOpen((prevState) => !prevState);
+      console.log(response);
       return response;
     } catch (e) {
       console.error(e.message);
@@ -99,31 +102,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
   //   setIsEditSignOffOpen((prevState) => !prevState);
   // }
 
-  console.log(isEditSignOffOpen);
-
   return (
-    // <div className="signoff-card">
-    //   <p className="admin-list-item">{signOff.signOff}</p>
-    //   <p className="admin-list-item">{signOff.author}</p>
-    //   <div className="admin-buttons-container">
-    //     <button className="ui-btn" onClick={handleApproveTask}>
-    //       Approve
-    //     </button>
-    //     <button className="ui-btn" onClick={handleDeleteTask}>
-    //       Delete
-    //     </button>
-    //     <button className="ui-btn" onClick={handleEditTask}>
-    //       Edit
-    //     </button>
-    //   </div>
-    // </div>
-
-    // <div className="signOff-container">
-    //   <div className="signoff-card">
-    //     <p className="admin-list-item">{signOff.signOff}</p>
-    //     <p className="admin-list-item">{signOff.author}</p>
-
-    //   </div>
     <div className="signOff-card">
       {!isEditSignOffOpen ? (
         <div>
