@@ -34,6 +34,7 @@ const Profile = () => {
   }, [getAccessTokenSilently, listView, adminTaskCompleted]);
 
   function handleAdminButtonClick(viewName, slug) {
+    handleTaskButtonClick();
     setListView(viewName);
     setUrlSlug(slug);
   }
