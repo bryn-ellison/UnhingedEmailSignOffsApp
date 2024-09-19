@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./App.css";
 import NavigateButton from "./NavigateButton";
 import PostForm from "./PostForm";
 import FormSubmittedSuccess from "./FormSubmittedSuccess";

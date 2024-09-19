@@ -69,7 +69,7 @@ const SignOff = () => {
   {
   }
   return (
-    <>
+    <div className="content-container">
       <div className="signOff-container">
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
@@ -81,7 +81,7 @@ const SignOff = () => {
           />
         )}
         <DisplayAuthor />
-        <p className="copy-message">{copySuccess}</p>
+        <p id="copy-message">{copySuccess}</p>
         <CopySignOffButton
           copyToClipBoard={copyToClipBoard}
           text={signOffData?.signOff}
@@ -91,7 +91,7 @@ const SignOff = () => {
         <GetNewSignOffButton handleFinishedtyping={handleReset} />
         <NavigateButton page={"/create"} buttonText={"Add your own"} />
       </div>
-    </>
+    </div>
   );
 };
 

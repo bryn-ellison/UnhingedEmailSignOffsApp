@@ -68,40 +68,6 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
     }
   }
 
-  // async function handleApproveTask() {
-  //   try {
-  //     const token = await getAccessTokenSilently({
-  //       authorizationParams: {
-  //         audience: "UnhingedEmailSignOffsApi",
-  //         scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-  //       },
-  //     });
-  //     await approveSignOff(token, signOff.id);
-  //     handleTaskButtonClick();
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }
-
-  // async function handleDeleteTask() {
-  //   try {
-  //     const token = await getAccessTokenSilently({
-  //       authorizationParams: {
-  //         audience: "UnhingedEmailSignOffsApi",
-  //         scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
-  //       },
-  //     });
-  //     await deleteSignOff(token, signOff.id);
-  //     handleTaskButtonClick();
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }
-
-  // function handleEditTask() {
-  //   setIsEditSignOffOpen((prevState) => !prevState);
-  // }
-
   return (
     <div className="signOff-card">
       {isEditSignOffOpen && listView === "To Approve" ? (

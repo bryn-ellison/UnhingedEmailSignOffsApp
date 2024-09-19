@@ -13,26 +13,130 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+#root {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+}
+
+.admin-list-item {
+  font-size: 1.2rem;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  place-items: center;
+}
+
+.signOff-container {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  padding: 1rem;
+  min-width: 95%;
+  min-height: 300px;
+}
+
+.signOff-container p {
+  text-align: left;
+  font-size: 1.8rem;
+}
+
+.signOff-card {
+  width: auto;
+  padding: 1rem;
+}
+
+.form-container {
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  padding: 1rem;
+  min-height: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1.3rem;
+  border: none;
+}
+
+button:hover {
+  color: lightgray;
+}
+
+.form-fields {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+.buttons-container {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.ui-btn {
+  padding: 0.5rem;
+  width: 10rem;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+}
+
+.copy-btn {
+  position: absolute;
+  font-size: 2rem;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+#copy-message {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 4rem;
+  font-size: 1rem;
 }
 
 @media (prefers-color-scheme: light) {

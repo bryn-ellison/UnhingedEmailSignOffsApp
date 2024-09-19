@@ -1,9 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
-import App from "./App.jsx";
+import SignOff from "./SignOff.jsx";
 import CreateSignOff from "./CreateSignOff.jsx";
 import ErrorPage from "./error-page";
 import AdminArea from "./AdminArea";
+import Layout from "./Layout.jsx";
 import "./index.css";
 import {
   createRoutesFromElements,
@@ -30,17 +31,19 @@ const Auth0ProviderLayout = () => (
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Auth0ProviderLayout />}>
-      <Route path="/" element={<App />} errorElement={<ErrorPage />}></Route>
-      <Route
-        path="/create"
-        element={<CreateSignOff />}
-        errorElement={<ErrorPage />}
-      ></Route>
-      <Route
-        path="/admin"
-        element={<AdminArea />}
-        errorElement={<ErrorPage />}
-      ></Route>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<SignOff />} errorElement={<ErrorPage />}></Route>
+        <Route
+          path="/create"
+          element={<CreateSignOff />}
+          errorElement={<ErrorPage />}
+        ></Route>
+        <Route
+          path="/admin"
+          element={<AdminArea />}
+          errorElement={<ErrorPage />}
+        ></Route>
+      </Route>
     </Route>
   )
 );
