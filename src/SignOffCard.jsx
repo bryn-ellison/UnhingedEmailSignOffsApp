@@ -104,30 +104,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
 
   return (
     <div className="signOff-card">
-      {!isEditSignOffOpen ? (
-        <div>
-          <p className="admin-list-item">{signOff.signOff}</p>
-          <p className="admin-list-item">{signOff.author}</p>
-          {listView === "To Approve" ? (
-            <div className="admin-buttons-container">
-              <AdminTaskButton
-                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                buttonText={"Approve"}
-              />
-              <AdminTaskButton
-                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                buttonText={"Delete"}
-              />
-              <AdminTaskButton
-                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
-                buttonText={"Edit"}
-              />
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
-      ) : (
+      {isEditSignOffOpen && listView === "To Approve" ? (
         <form
           onSubmit={handleSubmit}
           id="submit-edit-form"
@@ -159,6 +136,29 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
             </button>
           </div>
         </form>
+      ) : (
+        <div>
+          <p className="admin-list-item">{signOff.signOff}</p>
+          <p className="admin-list-item">{signOff.author}</p>
+          {listView === "To Approve" ? (
+            <div className="admin-buttons-container">
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Approve"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Delete"}
+              />
+              <AdminTaskButton
+                handleAdminTaskButtonClick={handleAdminTaskButtonClick}
+                buttonText={"Edit"}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       )}
     </div>
   );
