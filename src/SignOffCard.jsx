@@ -26,18 +26,20 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
         },
       });
       let callUrl = `https://unhingedemailsignoffwebapi.azurewebsites.net/api/signoffs/${signOff.id}`;
-      const patchData = JSON.stringify({
-        signOff: formData.signOff,
-        author: formData.author,
-      });
-      console.log(patchData);
-      const response = await fetch(callUrl, {
+
+      let requestOptions = {
         method: "PATCH",
-        body: patchData,
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-      });
+        body: JSON.stringify({
+          signOff: formData.signOff,
+          author: formData.author,
+        }),
+      };
+      console.log(requestOptions);
+      const response = await fetch(callUrl, requestOptions);
       setIsEditSignOffOpen((prevState) => !prevState);
       console.log(response);
       return response;
