@@ -35,7 +35,7 @@ const SignOff = () => {
     setFinishedTyping(bool);
   };
 
-  const copyToClipBoard = async (signOffData) => {
+  const copyToClipBoard = async () => {
     try {
       await navigator.clipboard.writeText(signOffData.signOff);
       setCopySuccess("Copied!");
@@ -82,10 +82,7 @@ const SignOff = () => {
         )}
         <DisplayAuthor />
         <p id="copy-message">{copySuccess}</p>
-        <CopySignOffButton
-          copyToClipBoard={copyToClipBoard}
-          text={signOffData?.signOff}
-        />
+        <CopySignOffButton copyToClipBoard={copyToClipBoard} />
       </div>
       <div className="buttons-container">
         <GetNewSignOffButton handleFinishedtyping={handleReset} />
