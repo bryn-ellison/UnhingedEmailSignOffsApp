@@ -80,14 +80,14 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
             className="form-fields"
             rows={3}
             name="signOff"
-            value={formData.signOff}
+            value={signOff.signOff}
             onChange={handleChange}
           />
           <input
             className="form-fields"
             type="text"
             name="author"
-            value={formData.author}
+            value={signOff.author}
             onChange={handleChange}
           />
           <div className="admin-buttons-container">
