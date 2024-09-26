@@ -2,11 +2,7 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: black;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,8 +10,8 @@
 }
 
 #root {
-  max-width: 600px;
   margin: 0 auto;
+  max-width: 600px;
 }
 
 body {
@@ -24,9 +20,20 @@ body {
   padding: 1rem;
 }
 
+.content-wrapper {
+  border: 3px solid black;
+  padding: 1rem;
+  background-color: #c8fff6;
+}
+
 h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
+  font-size: 2rem;
+  border: 3px solid black;
+  padding: 0.5rem;
+  flex: 5;
+  margin-left: 0.5rem;
+  text-align: left;
+  background-color: whitesmoke;
 }
 
 header {
@@ -36,8 +43,6 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 ul {
@@ -47,7 +52,7 @@ ul {
 
 li {
   margin: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.87);
+  border: 3px solid black;
 }
 
 .admin-list-item {
@@ -55,23 +60,42 @@ li {
 }
 
 .content-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  place-items: center;
+  width: 100%;
 }
 
 .signOff-container {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.87);
+  border: 3px solid black;
   padding: 1rem;
-  min-width: 95%;
   min-height: 300px;
+  background-color: whitesmoke;
 }
 
 .signOff-container p {
   text-align: left;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+}
+
+.top-icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+.to-button {
+  font-size: 1.2rem;
+  border: 3px solid black;
+  padding: 0.5rem;
+  flex: 1;
+  background-color: whitesmoke;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .signOff-card {
@@ -85,7 +109,7 @@ form {
 }
 
 button {
-  background-color: transparent;
+  background-color: whitesmoke;
   font-size: 1.3rem;
   border: none;
 }
@@ -106,17 +130,17 @@ textarea {
 }
 
 .buttons-container {
-  min-width: 95%;
   padding: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 2rem;
 }
 
 .ui-btn {
   padding: 0.5rem;
   width: 11rem;
-  border: 1px solid rgba(255, 255, 255, 0.87);
+  border: 3px solid black;
 }
 
 .copy-btn {
@@ -133,15 +157,12 @@ textarea {
   font-size: 1rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.3rem;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  .signOff-container p {
+    font-size: 1.3rem;
   }
 }
