@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { fetcherWithAxios } from "./FetchWithAxios";
 import Typewriter from "./TypeWriter";
 import GetNewSignOffButton from "./GetNewSignOffButton";
-import CopySignOffButton from "./CopySignOffButton";
+import { GoCopy } from "react-icons/go";
 import NavigateButton from "./NavigateButton";
 
 const SignOff = () => {
@@ -10,7 +10,7 @@ const SignOff = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [finishedTyping, setFinishedTyping] = useState(false);
-  const [copySuccess, setCopySuccess] = useState("");
+  const [copySuccess, setCopySuccess] = useState(false);
 
   const fetchSignOffData = async () => {
     try {
@@ -38,9 +38,9 @@ const SignOff = () => {
   const copyToClipBoard = async () => {
     try {
       await navigator.clipboard.writeText(signOffData.signOff);
-      setCopySuccess("Copied!");
+      setCopySuccess(true);
     } catch (err) {
-      setCopySuccess("Failed to copy!");
+      setCopySuccess(false);
     }
   };
 
@@ -86,8 +86,16 @@ const SignOff = () => {
           />
         )}
         <DisplayAuthor />
-        <p id="copy-message">{copySuccess}</p>
-        <CopySignOffButton copyToClipBoard={copyToClipBoard} />
+        <button
+          className="copy-btn"
+          style={{
+            backgroundColor: copySuccess ? "#ffc8d1" : "whitesmoke",
+            color: copySuccess ? "whitesmoke" : "black",
+          }}
+          onClick={copyToClipBoard}
+        >
+          <GoCopy />
+        </button>
       </div>
       <div className="buttons-container">
         <GetNewSignOffButton handleFinishedtyping={handleReset} />
