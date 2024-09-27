@@ -14,7 +14,7 @@ const getNewButton = ({ handleFinishedtyping }) => {
   return (
     <button
       disabled={disable}
-      style={{ backgroundColor: disable ? "#ffc8d1" : "whitesmoke" }}
+      style={{ backgroundColor: disable ? "#ffc8d1" : null }}
       className="ui-btn"
       onClick={handleButtonClick}
     >

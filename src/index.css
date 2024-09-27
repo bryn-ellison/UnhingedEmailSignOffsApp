@@ -134,6 +134,14 @@ button {
   padding: 10px;
 }
 
+textarea {
+  border-radius: 0px;
+}
+
+input {
+  border-radius: 0px;
+}
+
 textarea:focus,
 input:focus {
   outline: none;
@@ -165,13 +173,13 @@ textarea {
 }
 
 .ui-btn:focus {
-  outline: none;
+  background-color: #ffc8d1;
 }
 
 .copy-btn {
   position: absolute;
   bottom: 1rem;
-  font-size: 2rem;
+  font-size: 2.7rem;
   right: 1rem;
   color: black;
   height: 3rem;
@@ -180,6 +188,7 @@ textarea {
 
 .copy-btn:focus {
   animation: wobble 1s 1;
+  outline: none;
 }
 
 @keyframes wobble {
@@ -212,5 +221,9 @@ textarea {
 
   .ui-btn:hover {
     background-color: whitesmoke;
+  }
+
+  .copy-btn {
+    font-size: 2rem;
   }
 }
