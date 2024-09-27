@@ -31,12 +31,13 @@ const FormComponent = ({ handleSubmitForm }) => {
     <form onSubmit={handleSubmit} id="submit-signoff-form">
       <textarea
         className="form-fields"
-        rows={5}
+        rows={10}
         name="signOff"
         placeholder="Enter your unhinged email sign off"
         value={formData.message}
         onChange={handleChange}
-        maxLength={499}
+        maxLength={300}
+        required={true}
       />
       <input
         className="form-fields"
@@ -46,6 +47,7 @@ const FormComponent = ({ handleSubmitForm }) => {
         value={formData.name}
         onChange={handleChange}
         maxLength={99}
+        required={true}
       />
     </form>
   );

@@ -1,12 +1,26 @@
-const getNewButton = ({handleFinishedtyping}) => {
+import { useState } from "react";
 
-    function handleButtonClick() {
-        handleFinishedtyping(false)
-    }
+const getNewButton = ({ handleFinishedtyping }) => {
+  const [disable, setDisable] = useState(false);
 
-    return (
-        <button className="ui-btn" onClick={handleButtonClick}>Again</button>
-    )
-}
+  function handleButtonClick() {
+    handleFinishedtyping(false);
+    setDisable(true);
+    setTimeout(() => {
+      setDisable(false);
+    }, 1500);
+  }
+
+  return (
+    <button
+      disabled={disable}
+      style={{ backgroundColor: disable ? "#ffc8d1" : "whitesmoke" }}
+      className="ui-btn"
+      onClick={handleButtonClick}
+    >
+      Again
+    </button>
+  );
+};
 
 export default getNewButton;

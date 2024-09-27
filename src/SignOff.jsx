@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { fetcherWithAxios } from "./FetchWithAxios";
-import Typewriter from "./TypeEffect";
+import Typewriter from "./TypeWriter";
 import GetNewSignOffButton from "./GetNewSignOffButton";
 import CopySignOffButton from "./CopySignOffButton";
 import NavigateButton from "./NavigateButton";

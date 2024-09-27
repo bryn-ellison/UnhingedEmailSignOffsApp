@@ -134,6 +134,12 @@ button {
   padding: 10px;
 }
 
+textarea:focus,
+input:focus {
+  outline: none;
+  border: 3px solid black;
+}
+
 textarea {
   resize: none;
 }
@@ -155,11 +161,11 @@ textarea {
 }
 
 .ui-btn:hover {
-  background-color: rgba(245, 245, 245, 0.768);
+  background-color: #ffc8d1;
 }
 
 .ui-btn:focus {
-  background-color: whitesmoke;
+  outline: none;
 }
 
 .copy-btn {
@@ -188,5 +194,9 @@ textarea {
 
   .form-fields {
     font-size: 1.25rem;
+  }
+
+  .ui-btn:hover {
+    background-color: whitesmoke;
   }
 }
