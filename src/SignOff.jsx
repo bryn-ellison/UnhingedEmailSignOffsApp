@@ -89,8 +89,7 @@ const SignOff = () => {
         <button
           className="copy-btn"
           style={{
-            backgroundColor: copySuccess ? "#ffc8d1" : "whitesmoke",
-            color: copySuccess ? "whitesmoke" : "black",
+            color: copySuccess ? "#ffc8d1" : "black",
           }}
           onClick={copyToClipBoard}
         >
