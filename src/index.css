@@ -1,6 +1,6 @@
 :root {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  line-height: 1.5;
+  line-height: 1.25;
   font-weight: 400;
   color: black;
   font-synthesis: none;
@@ -11,7 +11,8 @@
 
 #root {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 650px;
+  height: 100vh;
 }
 
 body {
@@ -24,6 +25,9 @@ body {
   border: 3px solid black;
   padding: 1rem;
   background-color: #c8fff6;
+  height: 70vh;
+  display: flex;
+  flex-flow: column;
 }
 
 h1 {
@@ -38,11 +42,14 @@ h1 {
 
 header {
   text-align: center;
+  flex: 0 1 auto;
 }
 
 main {
   display: flex;
   flex-direction: column;
+  height: 75%;
+  flex: 1 1 auto;
 }
 
 ul {
@@ -59,23 +66,6 @@ li {
   font-size: 1.2rem;
 }
 
-.content-container {
-  width: 100%;
-}
-
-.signOff-container {
-  position: relative;
-  border: 3px solid black;
-  padding: 1rem;
-  min-height: 300px;
-  background-color: whitesmoke;
-}
-
-.signOff-container p {
-  text-align: left;
-  font-size: 1.6rem;
-}
-
 .top-icon-container {
   display: flex;
   flex-direction: row;
@@ -84,7 +74,7 @@ li {
 }
 
 .to-button {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   border: 3px solid black;
   padding: 0.5rem;
   flex: 1;
@@ -96,6 +86,28 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.content-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.signOff-container {
+  position: relative;
+  border: 3px solid black;
+  padding: 1rem;
+  background-color: whitesmoke;
+  flex: 1 1 auto;
+}
+
+.signOff-container p {
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
+  font-size: 1.6rem;
+  margin-top: 0;
 }
 
 .signOff-card {
@@ -112,14 +124,11 @@ button {
   background-color: whitesmoke;
   font-size: 1.3rem;
   border: none;
-}
-
-button:hover {
-  color: lightgray;
+  color: black;
 }
 
 .form-fields {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Courier New", Courier, monospace;
   font-size: 1.8rem;
   margin-bottom: 1rem;
   padding: 10px;
@@ -135,12 +144,22 @@ textarea {
   flex-direction: row;
   justify-content: space-evenly;
   gap: 2rem;
+  flex: 0 1 auto;
 }
 
 .ui-btn {
   padding: 0.5rem;
   width: 11rem;
   border: 3px solid black;
+  color: black;
+}
+
+.ui-btn:hover {
+  background-color: rgba(245, 245, 245, 0.768);
+}
+
+.ui-btn:focus {
+  background-color: whitesmoke;
 }
 
 .copy-btn {
@@ -148,6 +167,7 @@ textarea {
   font-size: 2rem;
   bottom: 1rem;
   right: 1rem;
+  color: black;
 }
 
 #copy-message {
@@ -159,10 +179,14 @@ textarea {
 
 @media only screen and (max-width: 600px) {
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 
   .signOff-container p {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+  }
+
+  .form-fields {
+    font-size: 1.25rem;
   }
 }

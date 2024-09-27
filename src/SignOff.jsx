@@ -60,7 +60,7 @@ const SignOff = () => {
       return (
         <Typewriter
           text={signOffData.author}
-          speed={40}
+          speed={45}
           handleFinishedtyping={handleFinishedtyping}
         />
       );
@@ -71,12 +71,17 @@ const SignOff = () => {
   return (
     <div className="content-container">
       <div className="signOff-container">
+        <p>
+          Hate your job and want to get fired? Workmates all younger and
+          therefore cooler than you? Use the sign off below on your next
+          life-sapping email exchange and reap the inevitable benefits.
+        </p>
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
         {signOffData && (
           <Typewriter
             text={signOffData.signOff}
-            speed={40}
+            speed={45}
             handleFinishedtyping={handleFinishedtyping}
           />
         )}
