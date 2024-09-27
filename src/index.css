@@ -183,8 +183,7 @@ textarea {
   font-size: 2.7rem;
   right: 1rem;
   color: black;
-  height: 3rem;
-  width: 3rem;
+  display: inline-block;
 }
 
 .copy-btn:focus {
@@ -239,10 +238,6 @@ textarea {
   }
 
   .copy-btn {
-    font-size: 1.5rem;
-    bottom: 0.5rem;
-    right: 0.5rem;
-    height: 2rem;
-    width: 2rem;
+    font-size: 1.8rem;
   }
 }

@@ -74,7 +74,7 @@ const SignOff = () => {
         <p>
           Hate your job and want to get fired? Workmates all younger and
           therefore cooler than you? Use the sign off below on your next
-          life-sapping email exchange and reap the inevitable benefits.
+          life-sapping email exchange and enjoy being cool/unemployed.
         </p>
         {loading && <div>Loading...</div>}
         {error && <div>{error}</div>}
