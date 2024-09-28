@@ -74,7 +74,7 @@ li {
 }
 
 .to-button {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   border: 3px solid black;
   padding: 0.5rem;
   flex: 1;
@@ -108,6 +108,11 @@ li {
   text-align: left;
   font-size: 1.6rem;
   margin-top: 0;
+  font-weight: bold;
+}
+
+#intro-text {
+  font-weight: 400;
 }
 
 .signOff-card {
@@ -179,10 +184,13 @@ textarea {
 
 .copy-btn {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0.2rem;
   font-size: 2.7rem;
-  right: 1rem;
+  right: 0.2rem;
   color: black;
+  height: 3rem;
+  width: 3rem;
+  background-color: transparent;
 }
 
 .copy-btn:focus {
@@ -210,6 +218,10 @@ textarea {
     font-size: 1.25rem;
   }
 
+  .to-button {
+    font-size: 1.1rem;
+  }
+
   .signOff-container p {
     font-size: 1.1rem;
   }
@@ -223,11 +235,11 @@ textarea {
   }
 
   .copy-btn {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   button {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -236,7 +248,19 @@ textarea {
     height: 90vh;
   }
 
+  h1 {
+    font-size: 1rem;
+  }
+
+  .to-button {
+    font-size: 1rem;
+  }
+
   .copy-btn {
-    font-size: 1.8rem;
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 1rem;
   }
 }
