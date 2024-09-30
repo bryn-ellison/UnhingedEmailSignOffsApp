@@ -206,8 +206,8 @@ textarea {
 }
 
 .copy-btn:focus {
-  animation: customAni 2s ease 0s infinite normal none;
-  -webkit-animation: customAni 2s ease 0s infinite normal none;
+  animation: customAni 2s ease 100ms infinite normal none;
+  -webkit-animation: customAni 2s ease 100ms infinite normal none;
   outline: none;
 }
 
