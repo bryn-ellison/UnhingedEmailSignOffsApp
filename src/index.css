@@ -193,25 +193,49 @@ textarea {
   height: 3rem;
   width: 3rem;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-btn svg {
+  width: 100%;
 }
 
 .copy-btn:focus {
-  animation: wobble 1s 1;
+  animation: customAni 2s ease 0s infinite normal none;
   outline: none;
 }
 
-@keyframes wobble {
-  25% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(-30deg);
-  }
-  75% {
-    transform: rotate(5deg);
-  }
+@keyframes customAni {
+  0%,
   100% {
     transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+
+  10% {
+    transform: rotate(8deg);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: rotate(-10deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-8deg);
+  }
+
+  90% {
+    transform: rotate(8deg);
   }
 }
 
