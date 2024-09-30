@@ -130,6 +130,7 @@ button {
   font-size: 1.3rem;
   border: none;
   color: black;
+  padding: none;
 }
 
 .form-fields {
@@ -180,6 +181,7 @@ textarea {
 
 .ui-btn:focus {
   background-color: #ffc8d1;
+  outline: none;
 }
 
 .copy-btn {
@@ -191,6 +193,9 @@ textarea {
   height: 3rem;
   width: 3rem;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .copy-btn:focus {
