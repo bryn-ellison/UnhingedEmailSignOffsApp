@@ -196,10 +196,13 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
 .copy-btn svg {
   flex: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .copy-btn:focus {
