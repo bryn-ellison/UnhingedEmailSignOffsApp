@@ -71,11 +71,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
   return (
     <div className="signOff-card">
       {isEditSignOffOpen && listView === "To Approve" ? (
-        <form
-          onSubmit={handleSubmit}
-          id="submit-edit-form"
-          className="signOff-card"
-        >
+        <form onSubmit={handleSubmit} id="submit-edit-form">
           <textarea
             className="form-fields"
             rows={3}
