@@ -151,6 +151,8 @@ li {
   background-color: whitesmoke;
   width: 100%;
   padding: 1rem;
+  justify-content: stretch;
+  display: flex;
 }
 
 form {

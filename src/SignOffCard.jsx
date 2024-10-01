@@ -107,7 +107,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
           <p className="admin-list-item">{signOff.signOff}</p>
           <p className="admin-list-item">{signOff.author}</p>
           {listView === "To Approve" ? (
-            <div className="buttons-container">
+            <div className="admin-buttons-container">
               <AdminTaskButton
                 handleAdminTaskButtonClick={handleAdminTaskButtonClick}
                 buttonText={"Approve"}
