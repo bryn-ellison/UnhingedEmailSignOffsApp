@@ -44,12 +44,26 @@ const CreateSignOff = () => {
   };
 
   return (
-    <div className="content-container">
-      <div className="signOff-container">{displayForm()}</div>
-      <div className="buttons-container">
-        {displayButtons()}
-        <NavigateButton page={"/"} buttonText={"Go back"} />
-      </div>
+    <div className="content-wrapper">
+      <header>
+        <div className="top-icon-container">
+          <SlEnvolope />
+          <SlPaperPlane />
+        </div>
+        <div className="title-container">
+          <div className="to-button">To:</div>
+          <h1>Unhinged Email Sign Offs</h1>
+        </div>
+      </header>
+      <main>
+        <div className="content-container">
+          <div className="signOff-container">{displayForm()}</div>
+          <div className="buttons-container">
+            {displayButtons()}
+            <NavigateButton page={"/"} buttonText={"Go back"} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
