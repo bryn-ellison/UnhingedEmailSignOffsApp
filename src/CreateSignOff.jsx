@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavigateButton from "./NavigateButton";
 import PostForm from "./PostForm";
 import FormSubmittedSuccess from "./FormSubmittedSuccess";
+import { SlEnvolope, SlPaperPlane } from "react-icons/sl";
 import FormSubmittedError from "./FormSubmittedError";
 
 const CreateSignOff = () => {
