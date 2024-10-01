@@ -79,6 +79,9 @@ main {
 
 ul {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
 }
 
@@ -141,6 +144,8 @@ li {
 }
 
 .signOff-card {
+  border: 3px solid black;
+  background-color: whitesmoke;
   width: auto;
   padding: 1rem;
 }
@@ -312,6 +317,15 @@ textarea {
     -webkit-transform: rotate(8deg);
     transform: rotate(8deg);
   }
+}
+
+.admin-container {
+  border: 3px solid black;
+  padding: 1rem;
+  background-color: #c8fff6;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {

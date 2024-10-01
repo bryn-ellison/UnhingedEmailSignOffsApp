@@ -6,6 +6,7 @@ const LogoutButton = () => {
 
   return (
     <button
+      className="ui-btn"
       onClick={() =>
         logout({
           logoutParams: {

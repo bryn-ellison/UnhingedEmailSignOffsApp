@@ -3,6 +3,7 @@ import { fetcherWithAxios } from "./FetchWithAxios";
 import Typewriter from "./TypeWriter";
 import GetNewSignOffButton from "./GetNewSignOffButton";
 import { GoCopy } from "react-icons/go";
+import { SlEnvolope, SlPaperPlane } from "react-icons/sl";
 import NavigateButton from "./NavigateButton";
 
 const SignOff = () => {
@@ -69,37 +70,51 @@ const SignOff = () => {
   {
   }
   return (
-    <div className="content-container">
-      <div className="signOff-container">
-        <p id="intro-text">
-          Hate your job and want to get fired? Workmates all younger and
-          therefore cooler than you? Use the sign off below on your next
-          life-sapping email exchange and enjoy being cool/unemployed.
-        </p>
-        {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
-        {signOffData && (
-          <Typewriter
-            text={signOffData.signOff}
-            speed={45}
-            handleFinishedtyping={handleFinishedtyping}
-          />
-        )}
-        <DisplayAuthor />
-        <button
-          className="copy-btn"
-          style={{
-            color: copySuccess ? "#ffc8d1" : "black",
-          }}
-          onClick={copyToClipBoard}
-        >
-          <GoCopy />
-        </button>
-      </div>
-      <div className="buttons-container">
-        <GetNewSignOffButton handleFinishedtyping={handleReset} />
-        <NavigateButton page={"/create"} buttonText={"Add your own"} />
-      </div>
+    <div className="content-wrapper">
+      <header>
+        <div className="top-icon-container">
+          <SlEnvolope />
+          <SlPaperPlane />
+        </div>
+        <div className="title-container">
+          <div className="to-button">To:</div>
+          <h1>Unhinged Email Sign Offs</h1>
+        </div>
+      </header>
+      <main>
+        <div className="content-container">
+          <div className="signOff-container">
+            <p id="intro-text">
+              Hate your job and want to get fired? Workmates all younger and
+              therefore cooler than you? Use the sign off below on your next
+              life-sapping email exchange and enjoy being cool/unemployed.
+            </p>
+            {loading && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            {signOffData && (
+              <Typewriter
+                text={signOffData.signOff}
+                speed={45}
+                handleFinishedtyping={handleFinishedtyping}
+              />
+            )}
+            <DisplayAuthor />
+            <button
+              className="copy-btn"
+              style={{
+                color: copySuccess ? "#ffc8d1" : "black",
+              }}
+              onClick={copyToClipBoard}
+            >
+              <GoCopy />
+            </button>
+          </div>
+          <div className="buttons-container">
+            <GetNewSignOffButton handleFinishedtyping={handleReset} />
+            <NavigateButton page={"/create"} buttonText={"Add your own"} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

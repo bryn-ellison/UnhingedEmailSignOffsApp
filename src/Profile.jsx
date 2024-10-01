@@ -49,8 +49,7 @@ const Profile = () => {
 
   return (
     <div className="form-container">
-      <h2>{listView}</h2>
-      <div className="admin-buttons-container">
+      <div className="buttons-container">
         <AdminButton
           handleAdminButtonClick={handleAdminButtonClick}
           buttonText={"To Approve"}
@@ -67,6 +66,7 @@ const Profile = () => {
           slug={"all"}
         />
       </div>
+      <h2>{listView}</h2>
       <ul>
         {signOffs.map((signOff, index) => {
           return (

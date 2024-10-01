@@ -13,7 +13,6 @@ const AdminArea = () => {
     return (
       isAuthenticated && (
         <div>
-          <p>Hello, {user.name}!</p>
           <Profile />
         </div>
       )
@@ -21,7 +20,7 @@ const AdminArea = () => {
   };
 
   return (
-    <div>
+    <div className="admin-container">
       <h1>Admin Area</h1>
       <AuthenticationButton />
       <CheckLogin />
