@@ -153,6 +153,7 @@ li {
   padding: 1rem;
   justify-content: stretch;
   display: flex;
+  flex-direction: column;
 }
 
 form {
@@ -209,7 +210,7 @@ input:focus {
   padding-bottom: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .ui-btn {
