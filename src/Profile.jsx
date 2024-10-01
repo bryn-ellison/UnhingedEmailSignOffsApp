@@ -66,7 +66,7 @@ const Profile = () => {
           slug={"all"}
         />
       </div>
-      <h2>{listView}</h2>
+      <h1>{listView}</h1>
       <ul>
         {signOffs.map((signOff, index) => {
           return (

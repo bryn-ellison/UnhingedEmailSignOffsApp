@@ -88,6 +88,7 @@ ul {
 
 li {
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .admin-list-item {
@@ -176,6 +177,7 @@ button {
 
 textarea {
   border-radius: 0px;
+  resize: none;
 }
 
 input {
@@ -186,10 +188,6 @@ textarea:focus,
 input:focus {
   outline: none;
   border: 3px solid black;
-}
-
-textarea {
-  resize: none;
 }
 
 .buttons-container {
