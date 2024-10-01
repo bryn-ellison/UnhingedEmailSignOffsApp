@@ -69,7 +69,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
   }
 
   return (
-    <>
+    <div className="signOff-card">
       {isEditSignOffOpen && listView === "To Approve" ? (
         <form
           onSubmit={handleSubmit}
@@ -130,7 +130,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 
