@@ -83,6 +83,7 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: 0;
+  width: 100%;
 }
 
 li {
@@ -168,6 +169,10 @@ button {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   padding: 10px;
+}
+
+.form-container {
+  width: 100%;
 }
 
 textarea {

@@ -10,13 +10,7 @@ const AdminArea = () => {
       return <div>Loading ...</div>;
     }
 
-    return (
-      isAuthenticated && (
-        <div>
-          <Profile />
-        </div>
-      )
-    );
+    return isAuthenticated && <Profile />;
   };
 
   return (
