@@ -213,6 +213,22 @@ input:focus {
   justify-content: space-evenly;
 }
 
+.admin-ui-btn {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 3px solid black;
+  color: black;
+}
+
+.admin-ui-btn:hover {
+  background-color: #ffc8d1;
+}
+
+.admin-ui-btn:focus {
+  background-color: #ffc8d1;
+  outline: none;
+}
+
 .ui-btn {
   padding: 0.5rem;
   width: 10rem;

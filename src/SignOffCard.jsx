@@ -91,11 +91,15 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
             onChange={handleChange}
           />
           <div className="admin-buttons-container">
-            <button className="ui-btn" form="submit-edit-form" type="submit">
+            <button
+              className="admin-ui-btn"
+              form="submit-edit-form"
+              type="submit"
+            >
               Submit
             </button>
             <button
-              className="ui-btn"
+              className="admin-ui-btn"
               onClick={() => setIsEditSignOffOpen((prevState) => !prevState)}
             >
               Cancel

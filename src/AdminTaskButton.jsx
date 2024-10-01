@@ -4,7 +4,7 @@ const AdminTaskButton = ({ handleAdminTaskButtonClick, buttonText }) => {
   }
 
   return (
-    <button className="ui-btn" onClick={handleButtonClick}>
+    <button className="admin-ui-btn" onClick={handleButtonClick}>
       {buttonText}
     </button>
   );
