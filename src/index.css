@@ -30,6 +30,31 @@ body {
   flex-flow: column;
 }
 
+footer {
+  display: flex;
+  flex-direction: row;
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: slategray;
+}
+
+a {
+  text-decoration: none;
+  color: slategray;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 h1 {
   font-size: 2rem;
   border: 3px solid black;
@@ -342,5 +367,11 @@ textarea {
 
   button {
     font-size: 1rem;
+  }
+}
+
+@media only screen and (max-height: 610px) {
+  .content-wrapper {
+    height: 100vh;
   }
 }
