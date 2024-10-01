@@ -89,10 +89,12 @@ ul {
 li {
   width: 100%;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: stretch;
 }
 
 .admin-list-item {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .top-icon-container {
