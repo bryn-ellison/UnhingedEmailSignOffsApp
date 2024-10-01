@@ -90,7 +90,7 @@ const SignOffCard = ({ handleTaskButtonClick, signOff, listView }) => {
             value={signOff.author}
             onChange={handleChange}
           />
-          <div className="admin-buttons-container">
+          <div className="buttons-container">
             <button className="ui-btn" form="submit-edit-form" type="submit">
               Submit
             </button>
