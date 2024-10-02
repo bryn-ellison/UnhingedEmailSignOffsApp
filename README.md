@@ -1,6 +1,8 @@
 # Unhinged Email Sign Off App
 
-This is a SLA (silly little app) designed to show my skills in React and associated frontend tech. This app consumes a .NET Core Api backend (which was also built by me).
+Live version can be seen here: https://unhingedemailsignoffs.com/
+
+This is a SLA (silly little app) designed to show my skills in React and associated frontend tech. This app consumes a .NET Core Api backend (which was also built by me and can be seen here: https://github.com/bryn-ellison/UnhingedSignOffApi).
 
 The app has the following features:
 
