@@ -17,13 +17,14 @@ import {
 
 const TRACKING_ID = "G-91BG7HZ4W7";
 ReactGA.initialize(TRACKING_ID);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Auth0ProviderLayout = () => (
   <Auth0Provider
     domain="dev-pc2rdn4i8ffin0d4.uk.auth0.com"
     clientId="yBHkadJfpzGsft7alJBqteh78Uj5UEMW"
     authorizationParams={{
-      redirect_uri: "https://unhingedemailsignoffs.netlify.app/admin",
+      redirect_uri: "https://unhingedemailsignoffs.com/admin",
       audience: "UnhingedEmailSignOffsApi",
       scope: "read:signoffs write:signoffs update:signoffs delete:signoffs",
     }}
