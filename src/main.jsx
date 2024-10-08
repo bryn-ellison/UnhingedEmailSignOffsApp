@@ -5,7 +5,7 @@ import CreateSignOff from "./CreateSignOff.jsx";
 import ErrorPage from "./error-page";
 import AdminArea from "./AdminArea";
 import Layout from "./Layout.jsx";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import "./index.css";
 import {
   createRoutesFromElements,
@@ -17,7 +17,6 @@ import {
 
 const TRACKING_ID = "G-91BG7HZ4W7";
 ReactGA.initialize(TRACKING_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Auth0ProviderLayout = () => (
   <Auth0Provider
